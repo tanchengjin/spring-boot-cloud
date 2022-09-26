@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/common-sdk/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/common-util/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/common-util/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo-auth/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo-authentication/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo-test/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/shop/goods/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/shop/goods/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/shop/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/shop/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/shop/user/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-test/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-cloud-oauth2/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-cloud-oauth2/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/util/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/util/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../maven/repository/org/springframework/boot/spring-boot-starter-parent/2.3.1.RELEASE/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

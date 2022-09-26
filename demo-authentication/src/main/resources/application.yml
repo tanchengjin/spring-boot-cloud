@@ -1,0 +1,49 @@
+server:
+  port: 8088
+  servlet:
+    context-path: /authentication
+
+spring:
+  application:
+    name: authentication # 应用名称也是构成 Nacos 配置管理 dataId 字段的一部分 (当 config.prefix 为空时)
+  cloud:
+    nacos:
+      # 服务注册发现
+      discovery:
+        enabled: true # 如果不想使用 Nacos 进行服务注册和发现, 设置为 false 即可
+        server-addr: 127.0.0.1:8848
+        # server-addr: 127.0.0.1:8848,127.0.0.1:8849,127.0.0.1:8850 # Nacos 服务器地址
+        namespace: 13f6bf83-e288-4d6e-9cc6-1354184b72da
+        metadata:
+          management:
+            context-path: ${server.servlet.context-path}/actuator
+      # 配置管理
+      config:
+        prefix: nacos-client
+        file-extension: yaml  # 配置内容的数据格式, 默认为 properties
+        enabled: true     # 如果不想使用 Nacos 进行配置管理, 设置为 false 即可
+        group: DEFAULT_GROUP  # 组, 默认为 DEFAULT_GROUP
+        namespace: 13f6bf83-e288-4d6e-9cc6-1354184b72da
+        server-addr: 127.0.0.1:8848
+  kafka:
+    bootstrap-servers: 127.0.0.1:9092
+    producer:
+      retries: 3
+    consumer:
+      auto-offset-reset: latest
+  sleuth:
+    sampler:
+      probability: 1.0  # 采样比例, 1.0 表示 100%, 默认是 0.1
+  zipkin:
+    sender:
+      type: kafka # 默认是 web
+    base-url: http://localhost:9411/
+# 暴露端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always

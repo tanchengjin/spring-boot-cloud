@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tanchengjin.oauth2.modules.user.mapper.UserMapper">
+
+    <resultMap type="com.tanchengjin.oauth2.modules.user.pojo.User" id="BaseResultMap">
+        <result column="id" jdbcType="BIGINT"
+                property="id"/>
+        <result column="username" jdbcType="VARCHAR"
+                property="username"/>
+        <result column="nickname" jdbcType="VARCHAR"
+                property="nickname"/>
+        <result column="password" jdbcType="VARCHAR"
+                property="password"/>
+        <result column="salt" jdbcType="VARCHAR"
+                property="salt"/>
+        <result column="avatar" jdbcType="VARCHAR"
+                property="avatar"/>
+        <result column="birthday" jdbcType="TIMESTAMP"
+                property="birthday"/>
+        <result column="sex" jdbcType="TINYINT"
+                property="sex"/>
+        <result column="phone" jdbcType="VARCHAR"
+                property="phone"/>
+        <result column="email" jdbcType="VARCHAR"
+                property="email"/>
+        <result column="remember_token" jdbcType="VARCHAR"
+                property="rememberToken"/>
+        <result column="type" jdbcType="TINYINT"
+                property="type"/>
+        <result column="status" jdbcType="TINYINT"
+                property="status"/>
+        <result column="created_at" jdbcType="TIMESTAMP"
+                property="createdAt"/>
+        <result column="updated_at" jdbcType="TIMESTAMP"
+                property="updatedAt"/>
+        <result column="deleted_at" jdbcType="TIMESTAMP"
+                property="deletedAt"/>
+        <result column="tenant_id" jdbcType="INTEGER"
+                property="tenantId"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        id
+        ,username ,nickname ,password ,salt ,avatar ,birthday ,sex ,phone ,email ,remember_token ,`type` ,`status` ,created_at ,updated_at ,deleted_at ,tenant_id    </sql>
+
+
+    <select id="selectByPrimaryKey" parameterType="long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from user
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+
+
+    <delete id="deleteByPrimaryKey" parameterType="long">
+        delete
+        from user
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+
+
+<!--    <insert id="insert" parameterType="com.tanchengjin.oauth2.modules.user.pojo.User"-->
+<!--            useGeneratedKeys="true" keyProperty="id">-->
+<!--        insert into user (id, username, nickname, password, salt, avatar, birthday, sex, phone, email, remember_token,-->
+<!--                          type, `status`, created_at, updated_at, deleted_at, created_by, updated_by, tenant_id)-->
+<!--        values (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR},-->
+<!--                #{password,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR},-->
+<!--                #{birthday,jdbcType=TIMESTAMP}, #{sex,jdbcType=TINYINT}, #{phone,jdbcType=VARCHAR},-->
+<!--                #{email,jdbcType=VARCHAR}, #{rememberToken,jdbcType=VARCHAR}, #{type,jdbcType=TINYINT},-->
+<!--                #{status,jdbcType=TINYINT}, #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP},-->
+<!--                #{deletedAt,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=BIGINT}, #{updatedBy,jdbcType=BIGINT},-->
+<!--                #{tenantId,jdbcType=INTEGER},)-->
+<!--    </insert>-->
+
+
+    <insert id="insertSelective" parameterType="com.tanchengjin.oauth2.modules.user.pojo.User"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="username != null">
+                username,
+            </if>
+            <if test="nickname != null">
+                nickname,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="salt != null">
+                salt,
+            </if>
+            <if test="avatar != null">
+                avatar,
+            </if>
+            <if test="birthday != null">
+                birthday,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+            <if test="rememberToken != null">
+                remember_token,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="status != null">
+                `status`,
+            </if>
+            <if test="createdAt != null">
+                created_at,
+            </if>
+            <if test="updatedAt != null">
+                updated_at,
+            </if>
+            <if test="deletedAt != null">
+                deleted_at,
+            </if>
+            <if test="createdBy != null">
+                created_by,
+            </if>
+            <if test="updatedBy != null">
+                updated_by,
+            </if>
+            <if test="tenantId != null">
+                tenant_id,
+            </if>
+        </trim>
+
+
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="nickname != null">
+                #{nickname,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="salt != null">
+                #{salt,jdbcType=VARCHAR},
+            </if>
+            <if test="avatar != null">
+                #{avatar,jdbcType=VARCHAR},
+            </if>
+            <if test="birthday != null">
+                #{birthday,jdbcType=TIMESTAMP},
+            </if>
+            <if test="sex != null">
+                #{sex,jdbcType=TINYINT},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="rememberToken != null">
+                #{rememberToken,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=TINYINT},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=TINYINT},
+            </if>
+            <if test="createdAt != null">
+                #{createdAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatedAt != null">
+                #{updatedAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deletedAt != null">
+                #{deletedAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createdBy != null">
+                #{createdBy,jdbcType=BIGINT},
+            </if>
+            <if test="updatedBy != null">
+                #{updatedBy,jdbcType=BIGINT},
+            </if>
+            <if test="tenantId != null">
+                #{tenantId,jdbcType=INTEGER},
+            </if>
+        </trim>
+
+
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.tanchengjin.oauth2.modules.user.pojo.User">
+        update user
+        <set>
+            <if test="id != null">
+
+
+                id = #{id,jdbcType=BIGINT},
+            </if>
+            <if test="username != null">
+
+
+                username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="nickname != null">
+
+
+                nickname = #{nickname,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+
+
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="salt != null">
+
+
+                salt = #{salt,jdbcType=VARCHAR},
+            </if>
+            <if test="avatar != null">
+
+
+                avatar = #{avatar,jdbcType=VARCHAR},
+            </if>
+            <if test="birthday != null">
+
+
+                birthday = #{birthday,jdbcType=TIMESTAMP},
+            </if>
+            <if test="sex != null">
+
+
+                sex = #{sex,jdbcType=TINYINT},
+            </if>
+            <if test="phone != null">
+
+
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+
+
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="rememberToken != null">
+
+
+                remember_token = #{rememberToken,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+
+
+                type = #{type,jdbcType=TINYINT},
+            </if>
+            <if test="status != null">
+
+
+                `status` = #{status,jdbcType=TINYINT},
+            </if>
+            <if test="createdAt != null">
+
+
+                created_at = #{createdAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatedAt != null">
+
+
+                updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deletedAt != null">
+
+
+                deleted_at = #{deletedAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createdBy != null">
+
+
+                created_by = #{createdBy,jdbcType=BIGINT},
+            </if>
+            <if test="updatedBy != null">
+
+
+                updated_by = #{updatedBy,jdbcType=BIGINT},
+            </if>
+            <if test="tenantId != null">
+
+
+                tenant_id = #{tenantId,jdbcType=INTEGER},
+            </if>
+
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.tanchengjin.oauth2.modules.user.pojo.User">
+        update user
+
+        set username = #{username,jdbcType=VARCHAR} nickname = #{nickname,jdbcType=VARCHAR} password = #{password,jdbcType=VARCHAR} salt = #{salt,jdbcType=VARCHAR} avatar = #{avatar,jdbcType=VARCHAR} birthday = #{birthday,jdbcType=TIMESTAMP} sex = #{sex,jdbcType=TINYINT} phone = #{phone,jdbcType=VARCHAR} email = #{email,jdbcType=VARCHAR} remember_token = #{rememberToken,jdbcType=VARCHAR} type = #{type,jdbcType=TINYINT} `status` = #{status,jdbcType=TINYINT} created_at = #{createdAt,jdbcType=TIMESTAMP} updated_at = #{updatedAt,jdbcType=TIMESTAMP} deleted_at = #{deletedAt,jdbcType=TIMESTAMP} created_by = #{createdBy,jdbcType=BIGINT} updated_by = #{updatedBy,jdbcType=BIGINT} tenant_id = #{tenantId,jdbcType=INTEGER}
+
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <select id="count" resultType="long">
+        select count(1)
+        from user
+    </select>
+
+    <select id="getAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from user
+    </select>
+
+    <select id="getAllByCondition" resultMap="BaseResultMap"
+            parameterType="com.tanchengjin.oauth2.modules.user.pojo.User">
+        select
+        <include refid="Base_Column_List"/>
+        from user
+
+        <where>
+
+            <if test="id != null ">
+                id = #{id}
+            </if>
+
+            <if test="username != null and username != ''">
+                AND username = #{username}
+            </if>
+
+            <if test="nickname != null and nickname != ''">
+                AND nickname = #{nickname}
+            </if>
+
+            <if test="password != null and password != ''">
+                AND password = #{password}
+            </if>
+
+            <if test="salt != null and salt != ''">
+                AND salt = #{salt}
+            </if>
+
+            <if test="avatar != null and avatar != ''">
+                AND avatar = #{avatar}
+            </if>
+
+            <if test="birthday != null ">
+                AND birthday = #{birthday}
+            </if>
+
+            <if test="sex != null ">
+                AND sex = #{sex}
+            </if>
+
+            <if test="phone != null and phone != ''">
+                AND phone = #{phone}
+            </if>
+
+            <if test="email != null and email != ''">
+                AND email = #{email}
+            </if>
+
+            <if test="rememberToken != null and rememberToken != ''">
+                AND remember_token = #{rememberToken}
+            </if>
+
+            <if test="type != null ">
+                AND type = #{type}
+            </if>
+
+            <if test="status != null ">
+                AND `status` = #{status}
+            </if>
+
+            <if test="createdAt != null ">
+                AND created_at = #{createdAt}
+            </if>
+
+            <if test="updatedAt != null ">
+                AND updated_at = #{updatedAt}
+            </if>
+
+            <if test="deletedAt != null ">
+                AND deleted_at = #{deletedAt}
+            </if>
+
+            <if test="createdBy != null ">
+                AND created_by = #{createdBy}
+            </if>
+
+            <if test="updatedBy != null ">
+                AND updated_by = #{updatedBy}
+            </if>
+
+            <if test="tenantId != null ">
+                AND tenant_id = #{tenantId}
+            </if>
+        </where>
+    </select>
+
+    <select id="existsUserByUsername" resultType="boolean">
+        select count(1)
+        from user
+        where username = #{username}
+    </select>
+    <select id="selectUserByMobile" resultType="com.tanchengjin.oauth2.modules.user.pojo.User">
+        select * from user where phone = #{mobile}
+    </select>
+    <select id="existsMobile" resultType="boolean">
+        select count(1) from user where phone = #{mobile}
+    </select>
+    <select id="selectUserByUsername" resultType="com.tanchengjin.oauth2.modules.user.pojo.User">
+        select * from user where username = #{username}
+    </select>
+
+    <delete id="batchDeleteByPrimaryKey">
+
+    </delete>
+</mapper>

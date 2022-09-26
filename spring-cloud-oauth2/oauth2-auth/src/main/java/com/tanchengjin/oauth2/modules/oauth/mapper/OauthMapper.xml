@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tanchengjin.oauth2.modules.oauth.mapper.OauthMapper">
+
+    <resultMap type="com.tanchengjin.oauth2.modules.oauth.pojo.Oauth" id="BaseResultMap">
+        <result column="id" jdbcType="BIGINT"
+                property="id"/>
+        <result column="user_id" jdbcType="BIGINT"
+                property="userId"/>
+        <result column="oauth_type" jdbcType="VARCHAR"
+                property="oauthType"/>
+        <result column="token" jdbcType="VARCHAR"
+                property="token"/>
+        <result column="created_at" jdbcType="TIMESTAMP"
+                property="createdAt"/>
+        <result column="updated_at" jdbcType="TIMESTAMP"
+                property="updatedAt"/>
+        <result column="tenant_id" jdbcType="INTEGER"
+                property="tenantId"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id
+        ,user_id ,oauth_type ,token ,created_at ,updated_at ,tenant_id    </sql>
+
+
+    <select id="selectByPrimaryKey" parameterType="long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from oauth
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+
+
+    <delete id="deleteByPrimaryKey" parameterType="long">
+        delete
+        from oauth
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+
+
+<!--    <insert id="insert" parameterType="com.tanchengjin.oauth2.modules.oauth.pojo.Oauth"-->
+<!--            useGeneratedKeys="true" keyProperty="id">-->
+<!--        insert into oauth (id, user_id, oauth_type, token, created_at, updated_at, create_by, update_by, tenant_id)-->
+<!--        values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{oauthType,jdbcType=VARCHAR},-->
+<!--                #{token,jdbcType=VARCHAR}, #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP},-->
+<!--                #{createdBy,jdbcType=BIGINT}, #{updatedBy,jdbcType=BIGINT}, #{tenantId,jdbcType=INTEGER},)-->
+<!--    </insert>-->
+
+
+    <insert id="insertSelective" parameterType="com.tanchengjin.oauth2.modules.oauth.pojo.Oauth"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into oauth
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="oauthType != null">
+                oauth_type,
+            </if>
+            <if test="token != null">
+                token,
+            </if>
+            <if test="createdAt != null">
+                created_at,
+            </if>
+            <if test="updatedAt != null">
+                updated_at,
+            </if>
+            <if test="createdBy != null">
+                create_by,
+            </if>
+            <if test="updatedBy != null">
+                update_by,
+            </if>
+            <if test="tenantId != null">
+                tenant_id,
+            </if>
+        </trim>
+
+
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=BIGINT},
+            </if>
+            <if test="oauthType != null">
+                #{oauthType,jdbcType=VARCHAR},
+            </if>
+            <if test="token != null">
+                #{token,jdbcType=VARCHAR},
+            </if>
+            <if test="createdAt != null">
+                #{createdAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatedAt != null">
+                #{updatedAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createdBy != null">
+                #{createdBy,jdbcType=BIGINT},
+            </if>
+            <if test="updatedBy != null">
+                #{updatedBy,jdbcType=BIGINT},
+            </if>
+            <if test="tenantId != null">
+                #{tenantId,jdbcType=INTEGER},
+            </if>
+        </trim>
+
+
+    </insert>
+
+    <update id="updatedByPrimaryKeySelective" parameterType="com.tanchengjin.oauth2.modules.oauth.pojo.Oauth">
+        update oauth
+        <set>
+            <if test="id != null">
+
+
+                id = #{id,jdbcType=BIGINT},
+            </if>
+            <if test="userId != null">
+
+
+                user_id = #{userId,jdbcType=BIGINT},
+            </if>
+            <if test="oauthType != null">
+
+
+                oauth_type = #{oauthType,jdbcType=VARCHAR},
+            </if>
+            <if test="token != null">
+
+
+                token = #{token,jdbcType=VARCHAR},
+            </if>
+            <if test="createdAt != null">
+
+
+                created_at = #{createdAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatedAt != null">
+
+
+                updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createdBy != null">
+
+
+                create_by = #{createdBy,jdbcType=BIGINT},
+            </if>
+            <if test="updatedBy != null">
+
+
+                update_by = #{updatedBy,jdbcType=BIGINT},
+            </if>
+            <if test="tenantId != null">
+
+
+                tenant_id = #{tenantId,jdbcType=INTEGER},
+            </if>
+
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <update id="updatedByPrimaryKey" parameterType="com.tanchengjin.oauth2.modules.oauth.pojo.Oauth">
+        update oauth
+
+        set user_id = #{userId,jdbcType=BIGINT} oauth_type = #{oauthType,jdbcType=VARCHAR} token = #{token,jdbcType=VARCHAR} created_at = #{createdAt,jdbcType=TIMESTAMP} updated_at = #{updatedAt,jdbcType=TIMESTAMP} create_by = #{createdBy,jdbcType=BIGINT} update_by = #{updatedBy,jdbcType=BIGINT} tenant_id = #{tenantId,jdbcType=INTEGER}
+
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <select id="count" resultType="long">
+        select count(1)
+        from oauth
+    </select>
+
+    <select id="getAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from oauth
+    </select>
+
+    <select id="getAllByCondition" resultMap="BaseResultMap"
+            parameterType="com.tanchengjin.oauth2.modules.oauth.pojo.Oauth">
+        select
+        <include refid="Base_Column_List"/>
+        from oauth
+
+        <where>
+
+            <if test="id != null ">
+                id = #{id}
+            </if>
+
+            <if test="userId != null ">
+                AND user_id = #{userId}
+            </if>
+
+            <if test="oauthType != null and oauthType != ''">
+                AND oauth_type = #{oauthType}
+            </if>
+
+            <if test="token != null and token != ''">
+                AND token = #{token}
+            </if>
+
+            <if test="createdAt != null ">
+                AND created_at = #{createdAt}
+            </if>
+
+            <if test="updatedAt != null ">
+                AND updated_at = #{updatedAt}
+            </if>
+
+            <if test="createdBy != null ">
+                AND create_by = #{createdBy}
+            </if>
+
+            <if test="updatedBy != null ">
+                AND update_by = #{updatedBy}
+            </if>
+
+            <if test="tenantId != null ">
+                AND tenant_id = #{tenantId}
+            </if>
+        </where>
+    </select>
+    <select id="existsByToken" resultType="java.lang.Boolean">
+        select count(1) from oauth where token = #{token}
+    </select>
+
+    <delete id="batchDeleteByPrimaryKey">
+
+    </delete>
+
+</mapper>

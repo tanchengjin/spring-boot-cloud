@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9aa4e6c5-5d0e-4c1a-9606-dcb759cfb10a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo-auth/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo-test/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/goods/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shop/user/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-gateway/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-gateway/src/main/java/com/tanchengjin/oauth2/gateway/flter/AuthGlobalFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-test/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-cloud-oauth2/pom.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JRebelWorkspace">
+    <option name="jrebelEnabledAutocompile" value="true" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="E:\maven\repository" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../../maven/apache-maven-3.8.2" />
+        <option name="userSettingsFile" value="E:\maven\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2E6UbefwqM3EDDFXOGQaMlTC7Ad" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/java/demo-spring-cloud/spring-cloud-oauth2/oauth2-auth/src/main/java/com/tanchengjin/oauth2/conf/security/oauth2/provider&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;4cb672f0dabb8196588d1846aec5ef9f&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ],
+    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/&quot;: [
+      &quot;MySQL&quot;
+    ]
+  }
+}</component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RebelAgentSelection">
+    <selection>jr</selection>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\java\demo-spring-cloud\spring-cloud-oauth2\oauth2-auth\src\main\java\com\tanchengjin\oauth2\conf\security\oauth2\provider" />
+      <recent name="E:\java\demo-spring-cloud\spring-cloud-oauth2\oauth2-auth\src\main\java\com\tanchengjin\oauth2\modules\user" />
+      <recent name="E:\java\demo-spring-cloud\spring-cloud-oauth2\oauth2-auth-test\src\main\resources" />
+      <recent name="E:\java\demo-spring-cloud\spring-cloud-oauth2\oauth2-auth-gateway\src\main\resources" />
+      <recent name="E:\java\demo-spring-cloud\demo-auth\src\main\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\java\demo-spring-cloud\spring-cloud-oauth2\oauth2-auth\src\main\java\com\tanchengjin\oauth2\modules\oauth\mapper" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.tanchengjin.auth.controller" />
+      <recent name="com.tanchengjin.shop.feign" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.Oauth2AuthenticationApplication">
+    <configuration name="UserDetailServiceImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.tanchengjin.oauth2.conf.UserDetailServiceImpl" />
+      <module name="oauth2-auth" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tanchengjin.oauth2.conf.mybatis.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AuthApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="ACTIVE_PROFILES" />
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="demo-auth" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.tanchengjin.auth.AuthApplication" />
+      <option name="UPDATE_ACTION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tanchengjin.auth.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="ACTIVE_PROFILES" />
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="gateway" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.tanchengjin.gateway.GatewayApplication" />
+      <option name="UPDATE_ACTION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Oauth2AuthenticationApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="ACTIVE_PROFILES" />
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="oauth2-auth" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.tanchengjin.oauth2.Oauth2AuthenticationApplication" />
+      <option name="UPDATE_ACTION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Oauth2GatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="oauth2-auth-gateway" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.tanchengjin.oauth2.gateway.Oauth2GatewayApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tanchengjin.oauth2.gateway.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Oauth2TestApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="oauth2-auth-test" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.tanchengjin.oauth2.test.Oauth2TestApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tanchengjin.oauth2.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.UserDetailServiceImpl" />
+      <item itemvalue="Spring Boot.GatewayApplication" />
+      <item itemvalue="Spring Boot.Oauth2AuthenticationApplication" />
+      <item itemvalue="Spring Boot.Oauth2GatewayApplication" />
+      <item itemvalue="Spring Boot.Oauth2TestApplication" />
+      <item itemvalue="Spring Boot.AuthApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.Oauth2AuthenticationApplication" />
+        <item itemvalue="Spring Boot.Oauth2TestApplication" />
+        <item itemvalue="Spring Boot.Oauth2GatewayApplication" />
+        <item itemvalue="Application.UserDetailServiceImpl" />
+        <item itemvalue="Spring Boot.AuthApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9aa4e6c5-5d0e-4c1a-9606-dcb759cfb10a" name="Changes" comment="" />
+      <created>1661915600275</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1661915600275</updated>
+      <workItem from="1661915601628" duration="12790000" />
+      <workItem from="1661948679555" duration="1777000" />
+      <workItem from="1661990605862" duration="16722000" />
+      <workItem from="1662077684223" duration="8382000" />
+      <workItem from="1662169147379" duration="599000" />
+      <workItem from="1662368256749" duration="4888000" />
+      <workItem from="1662429639646" duration="1808000" />
+      <workItem from="1662520290621" duration="10000" />
+      <workItem from="1662885438829" duration="16000" />
+      <workItem from="1663546945026" duration="25495000" />
+      <workItem from="1663632537052" duration="14879000" />
+      <workItem from="1663675586147" duration="4714000" />
+      <workItem from="1663753438378" duration="10294000" />
+      <workItem from="1663807668344" duration="6690000" />
+      <workItem from="1663828999500" duration="14610000" />
+      <workItem from="1663895888360" duration="4343000" />
+      <workItem from="1663937794483" duration="4039000" />
+      <workItem from="1663942508758" duration="188000" />
+      <workItem from="1663942715224" duration="1544000" />
+      <workItem from="1663986721726" duration="5614000" />
+      <workItem from="1663992348774" duration="773000" />
+      <workItem from="1664010349112" duration="2444000" />
+      <workItem from="1664018644884" duration="9097000" />
+      <workItem from="1664074096192" duration="2460000" />
+      <workItem from="1664111258026" duration="880000" />
+      <workItem from="1664157622522" duration="1738000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/gateway/src/main/java/com/tanchengjin/gateway/filter/HeaderTokenGatewayFilter.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/gateway/src/main/java/com/tanchengjin/gateway/filter/HeaderTokenGatewayFilter.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/shop/user/src/main/java/com/tanchengjin/user/controller/UserController.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/shop/user/src/main/java/com/tanchengjin/user/controller/UserController.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/demo-test/src/main/java/com/tanchengjin/test/util/throttle/ThrottleInterceptor.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/demo-test/src/main/java/com/tanchengjin/test/util/throttle/ThrottleInterceptor.java</url>
+          <line>25</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/demo-test/src/main/java/com/tanchengjin/test/util/throttle/ConcurrentUtil.java</url>
+          <line>48</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/demo-test/src/main/java/com/tanchengjin/test/util/throttle/ConcurrentUtil.java</url>
+          <line>41</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/demo-auth/src/main/java/com/tanchengjin/auth/controller/LoginController.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth/src/main/java/com/tanchengjin/oauth2/modules/user/service/impl/UserServiceImpl.java</url>
+          <line>75</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth/src/main/java/com/tanchengjin/oauth2/conf/security/TokenGranterConfig.java</url>
+          <line>79</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth/src/main/java/com/tanchengjin/oauth2/conf/security/TokenGranterConfig.java</url>
+          <line>72</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth/src/main/java/com/tanchengjin/oauth2/conf/security/TokenGranterConfig.java</url>
+          <line>58</line>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth/src/main/java/com/tanchengjin/oauth2/conf/security/TokenGranterConfig.java</url>
+          <line>68</line>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth/src/main/java/com/tanchengjin/oauth2/conf/UserDetailServiceImpl.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
