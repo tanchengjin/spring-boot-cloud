@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tanchengjin.oauth2.modules.article.mapper.ArticleCategoryMapper">
+    <resultMap id="BaseResultMap" type="com.tanchengjin.oauth2.modules.article.pojo.ArticleCategory">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="sort" jdbcType="INTEGER" property="sort"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="parent_id" jdbcType="INTEGER" property="parentId"/>
+        <result column="level" jdbcType="INTEGER" property="level"/>
+        <result column="path" jdbcType="VARCHAR" property="path"/>
+        <result column="is_directory" jdbcType="TINYINT" property="isDirectory"/>
+        <result column="enable" jdbcType="TINYINT" property="enable"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id
+        , `name`, parent_id,`sort`,`level`,is_directory,`path`,`enable`,created_at,`updated_at`
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from article_category
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from article_category
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.tanchengjin.oauth2.modules.article.pojo.ArticleCategory">
+        insert into article_category (id, `name`,
+                                      parent_id, `sort`, `level`, `is_directory`, path, `enable`)
+        values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
+                #{parentId,jdbcType=INTEGER}, #{sort,jdbcType=INTEGER}, #{level,jdbcType=INTEGER},
+                #{isDirectory,jdbcType=BOOLEAN}, #{path,jdbcType=VARCHAR}, #{enable,jdbcType=BOOLEAN})
+    </insert>
+    <insert id="insertSelective" parameterType="com.tanchengjin.oauth2.modules.article.pojo.ArticleCategory">
+        insert into article_category
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="name != null">
+                `name`,
+            </if>
+            <if test="parentId != null">
+                parent_id,
+            </if>
+            <if test="sort != null">
+                `sort`,
+            </if>
+            <if test="level != null">
+                `level`,
+            </if>
+            <if test="isDirectory != null">
+                `is_directory`,
+            </if>
+            <if test="path != null">
+                `path`,
+            </if>
+            <if test="enable != null">
+                `enable`,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="parentId != null">
+                #{parentId,jdbcType=INTEGER},
+            </if>
+            <if test="sort != null">
+                #{sort,jdbcType=INTEGER},
+            </if>
+            <if test="level != null">
+                #{level,jdbcType=INTEGER},
+            </if>
+            <if test="isDirectory != null">
+                #{isDirectory,jdbcType=INTEGER},
+            </if>
+            <if test="path != null">
+                #{path,jdbcType=VARCHAR},
+            </if>
+            <if test="enable != null">
+                #{enable,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.tanchengjin.oauth2.modules.article.pojo.ArticleCategory">
+        update article_category
+        <set>
+            <if test="name != null">
+                `name` = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="parentId != null">
+                parent_id = #{parentId,jdbcType=INTEGER},
+            </if>
+            <if test="sort != null">
+                `sort` = #{sort,jdbcType=INTEGER},
+            </if>
+            <if test="level != null">
+                `level` = #{level,jdbcType=INTEGER},
+            </if>
+            <if test="isDirectory != null">
+                `is_directory` = #{isDirectory,jdbcType=VARCHAR},
+            </if>
+            <if test="path != null">
+                `path` = #{path,jdbcType=VARCHAR},
+            </if>
+            <if test="enable != null">
+                `enable` = #{enable,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.tanchengjin.oauth2.modules.article.pojo.ArticleCategory">
+        update article_category
+        set `name`        = #{name,jdbcType=VARCHAR},
+            parent_id     = #{parentId,jdbcType=INTEGER},
+            `sort`        = #{sort,jdbcType=INTEGER},
+            `level`       = #{level,jdbcType=INTEGER},
+            `isDirectory` = #{isDirectory,jdbcType=BOOLEAN},
+            `path`        = #{path,jdbcType=VARCHAR},
+            `enable`      = #{enable,jdbcType=BOOLEAN},
+            where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="getAll" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"></include> from article_category
+    </select>
+
+    <select id="count" resultType="int">
+        select count(1)
+        from article_category
+    </select>
+
+    <select id="getAllAndParentIdIsNull" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"></include> from article_category where parent_id is null
+    </select>
+
+    <select id="selectByParentId" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"></include> from article_category where parent_id =
+        #{id,jdbcType=INTEGER}
+    </select>
+</mapper>

@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tanchengjin.oauth2.modules.article.mapper.ArticleMapper">
+    <resultMap type="com.tanchengjin.oauth2.modules.article.pojo.Article" id="BaseResultMap">
+        <result column="id" jdbcType="BIGINT"
+                property="id"/>
+        <result column="category_id" jdbcType="INTEGER"
+                property="categoryId"/>
+        <result column="title" jdbcType="VARCHAR"
+                property="title"/>
+        <result column="sub_title" jdbcType="VARCHAR"
+                property="subTitle"/>
+        <result column="description" jdbcType="VARCHAR"
+                property="description"/>
+        <result column="keywords" jdbcType="VARCHAR"
+                property="keywords"/>
+        <result column="author" jdbcType="VARCHAR"
+                property="author"/>
+        <result column="cover_image" jdbcType="VARCHAR"
+                property="coverImage"/>
+        <result column="status" jdbcType="TINYINT"
+                property="status"/>
+        <result column="virtual_click" jdbcType="INTEGER"
+                property="virtualClick"/>
+        <result column="click" jdbcType="INTEGER"
+                property="click"/>
+        <result column="sort" jdbcType="INTEGER"
+                property="sort"/>
+        <result column="comment" jdbcType="TINYINT"
+                property="comment"/>
+        <result column="commend" jdbcType="TINYINT"
+                property="commend"/>
+        <result column="top" jdbcType="TINYINT"
+                property="top"/>
+        <result column="like_count" jdbcType="INTEGER"
+                property="likeCount"/>
+        <result column="comment_count" jdbcType="INTEGER"
+                property="commentCount"/>
+        <result column="source" jdbcType="VARCHAR"
+                property="source"/>
+        <result column="source_url" jdbcType="VARCHAR"
+                property="sourceUrl"/>
+        <result column="redirect_url" jdbcType="VARCHAR"
+                property="redirectUrl"/>
+        <result column="extra" jdbcType="VARCHAR"
+                property="extra"/>
+        <result column="created_at" jdbcType="TIMESTAMP"
+                property="createdAt"/>
+        <result column="updated_at" jdbcType="TIMESTAMP"
+                property="updatedAt"/>
+        <result column="deleted_at" jdbcType="TIMESTAMP"
+                property="deletedAt"/>
+    </resultMap>
+
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.tanchengjin.oauth2.modules.article.pojo.Article">
+        <result column="content" jdbcType="LONGVARCHAR" property="content"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id
+        ,category_id ,title ,sub_title ,description ,keywords ,author ,content ,cover_image ,`status` ,virtual_click ,click ,sort ,`comment` ,commend ,top ,like_count ,comment_count ,`source` ,source_url ,redirect_url ,extra ,created_at ,updated_at ,deleted_at    </sql>
+
+    <sql id="Blob_Column_List">
+        content        </sql>
+
+    <select id="selectByPrimaryKey" parameterType="long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>,
+        <include refid="Blob_Column_List"/>
+        from article
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+
+
+    <delete id="deleteByPrimaryKey" parameterType="long">
+        delete
+        from article
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+
+
+    <!--    <insert id="insert" parameterType="com.tanchengjin.oauth2.modules.article.pojo.Article"-->
+    <!--            useGeneratedKeys="true" keyProperty="id">-->
+    <!--        insert into article (id, category_id, title, sub_title, description, keywords, author, content, cover_image,-->
+    <!--                             `status`, virtual_click, click, sort, `comment`, commend, top, like_count, comment_count,-->
+    <!--                             `source`, source_url, redirect_url, extra, created_at, updated_at, deleted_at)-->
+    <!--        values (#{id,jdbcType=BIGINT}, #{categoryId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR},-->
+    <!--                #{subTitle,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{keywords,jdbcType=VARCHAR},-->
+    <!--                #{author,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR}, #{coverImage,jdbcType=VARCHAR},-->
+    <!--                #{status,jdbcType=TINYINT}, #{virtualClick,jdbcType=INTEGER}, #{click,jdbcType=INTEGER},-->
+    <!--                #{sort,jdbcType=INTEGER}, #{comment,jdbcType=TINYINT}, #{commend,jdbcType=TINYINT},-->
+    <!--                #{top,jdbcType=TINYINT}, #{likeCount,jdbcType=INTEGER}, #{commentCount,jdbcType=INTEGER},-->
+    <!--                #{source,jdbcType=VARCHAR}, #{sourceUrl,jdbcType=VARCHAR}, #{redirectUrl,jdbcType=VARCHAR},-->
+    <!--                #{extra,jdbcType=VARCHAR}, #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP},-->
+    <!--                #{deletedAt,jdbcType=TIMESTAMP},)-->
+    <!--    </insert>-->
+
+
+    <insert id="insertSelective" parameterType="com.tanchengjin.oauth2.modules.article.pojo.Article"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into article
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="categoryId != null">
+                category_id,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="subTitle != null">
+                sub_title,
+            </if>
+            <if test="description != null">
+                description,
+            </if>
+            <if test="keywords != null">
+                keywords,
+            </if>
+            <if test="author != null">
+                author,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+            <if test="coverImage != null">
+                cover_image,
+            </if>
+            <if test="status != null">
+                `status`,
+            </if>
+            <if test="virtualClick != null">
+                virtual_click,
+            </if>
+            <if test="click != null">
+                click,
+            </if>
+            <if test="sort != null">
+                sort,
+            </if>
+            <if test="comment != null">
+                `comment`,
+            </if>
+            <if test="commend != null">
+                commend,
+            </if>
+            <if test="top != null">
+                top,
+            </if>
+            <if test="likeCount != null">
+                like_count,
+            </if>
+            <if test="commentCount != null">
+                comment_count,
+            </if>
+            <if test="source != null">
+                `source`,
+            </if>
+            <if test="sourceUrl != null">
+                source_url,
+            </if>
+            <if test="redirectUrl != null">
+                redirect_url,
+            </if>
+            <if test="extra != null">
+                extra,
+            </if>
+            <if test="createdAt != null">
+                created_at,
+            </if>
+            <if test="updatedAt != null">
+                updated_at,
+            </if>
+            <if test="deletedAt != null">
+                deleted_at,
+            </if>
+        </trim>
+
+
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="categoryId != null">
+                #{categoryId,jdbcType=INTEGER},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="subTitle != null">
+                #{subTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null">
+                #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="keywords != null">
+                #{keywords,jdbcType=VARCHAR},
+            </if>
+            <if test="author != null">
+                #{author,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="coverImage != null">
+                #{coverImage,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=TINYINT},
+            </if>
+            <if test="virtualClick != null">
+                #{virtualClick,jdbcType=INTEGER},
+            </if>
+            <if test="click != null">
+                #{click,jdbcType=INTEGER},
+            </if>
+            <if test="sort != null">
+                #{sort,jdbcType=INTEGER},
+            </if>
+            <if test="comment != null">
+                #{comment,jdbcType=TINYINT},
+            </if>
+            <if test="commend != null">
+                #{commend,jdbcType=TINYINT},
+            </if>
+            <if test="top != null">
+                #{top,jdbcType=TINYINT},
+            </if>
+            <if test="likeCount != null">
+                #{likeCount,jdbcType=INTEGER},
+            </if>
+            <if test="commentCount != null">
+                #{commentCount,jdbcType=INTEGER},
+            </if>
+            <if test="source != null">
+                #{source,jdbcType=VARCHAR},
+            </if>
+            <if test="sourceUrl != null">
+                #{sourceUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="redirectUrl != null">
+                #{redirectUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="extra != null">
+                #{extra,jdbcType=VARCHAR},
+            </if>
+            <if test="createdAt != null">
+                #{createdAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatedAt != null">
+                #{updatedAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deletedAt != null">
+                #{deletedAt,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+
+
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.tanchengjin.oauth2.modules.article.pojo.Article">
+        update article
+        <set>
+            <if test="id != null">
+
+
+                id = #{id,jdbcType=BIGINT},
+            </if>
+            <if test="categoryId != null">
+
+
+                category_id = #{categoryId,jdbcType=INTEGER},
+            </if>
+            <if test="title != null">
+
+
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="subTitle != null">
+
+
+                sub_title = #{subTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null">
+
+
+                description = #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="keywords != null">
+
+
+                keywords = #{keywords,jdbcType=VARCHAR},
+            </if>
+            <if test="author != null">
+
+
+                author = #{author,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+
+
+                content = #{content,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="coverImage != null">
+
+
+                cover_image = #{coverImage,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+
+
+                `status` = #{status,jdbcType=TINYINT},
+            </if>
+            <if test="virtualClick != null">
+
+
+                virtual_click = #{virtualClick,jdbcType=INTEGER},
+            </if>
+            <if test="click != null">
+
+
+                click = #{click,jdbcType=INTEGER},
+            </if>
+            <if test="sort != null">
+
+
+                sort = #{sort,jdbcType=INTEGER},
+            </if>
+            <if test="comment != null">
+
+
+                `comment` = #{comment,jdbcType=TINYINT},
+            </if>
+            <if test="commend != null">
+
+
+                commend = #{commend,jdbcType=TINYINT},
+            </if>
+            <if test="top != null">
+
+
+                top = #{top,jdbcType=TINYINT},
+            </if>
+            <if test="likeCount != null">
+
+
+                like_count = #{likeCount,jdbcType=INTEGER},
+            </if>
+            <if test="commentCount != null">
+
+
+                comment_count = #{commentCount,jdbcType=INTEGER},
+            </if>
+            <if test="source != null">
+
+
+                `source` = #{source,jdbcType=VARCHAR},
+            </if>
+            <if test="sourceUrl != null">
+
+
+                source_url = #{sourceUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="redirectUrl != null">
+
+
+                redirect_url = #{redirectUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="extra != null">
+
+
+                extra = #{extra,jdbcType=VARCHAR},
+            </if>
+            <if test="createdAt != null">
+
+
+                created_at = #{createdAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatedAt != null">
+
+
+                updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deletedAt != null">
+
+
+                deleted_at = #{deletedAt,jdbcType=TIMESTAMP},
+            </if>
+
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.tanchengjin.oauth2.modules.article.pojo.Article">
+        update article
+
+        set category_id = #{categoryId,jdbcType=INTEGER} title = #{title,jdbcType=VARCHAR} sub_title = #{subTitle,jdbcType=VARCHAR} description = #{description,jdbcType=VARCHAR} keywords = #{keywords,jdbcType=VARCHAR} author = #{author,jdbcType=VARCHAR} content = #{content,jdbcType=LONGVARCHAR} cover_image = #{coverImage,jdbcType=VARCHAR} `status` = #{status,jdbcType=TINYINT} virtual_click = #{virtualClick,jdbcType=INTEGER} click = #{click,jdbcType=INTEGER} sort = #{sort,jdbcType=INTEGER} `comment` = #{comment,jdbcType=TINYINT} commend = #{commend,jdbcType=TINYINT} top = #{top,jdbcType=TINYINT} like_count = #{likeCount,jdbcType=INTEGER} comment_count = #{commentCount,jdbcType=INTEGER} `source` = #{source,jdbcType=VARCHAR} source_url = #{sourceUrl,jdbcType=VARCHAR} redirect_url = #{redirectUrl,jdbcType=VARCHAR} extra = #{extra,jdbcType=VARCHAR} created_at = #{createdAt,jdbcType=TIMESTAMP} updated_at = #{updatedAt,jdbcType=TIMESTAMP} deleted_at = #{deletedAt,jdbcType=TIMESTAMP}
+
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <select id="count" resultType="long">
+        select count(1)
+        from article
+    </select>
+
+    <select id="getAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>,
+        <include refid="Blob_Column_List"/>
+        from article where deleted_at is null
+    </select>
+
+    <select id="getAllByCondition" resultMap="BaseResultMap"
+            parameterType="com.tanchengjin.oauth2.modules.article.pojo.Article">
+        select
+        <include refid="Base_Column_List"/>,
+        <include refid="Blob_Column_List"/>
+        from article
+
+        <where>
+            <if test="id != null ">
+                id = #{id}
+            </if>
+
+            <if test="categoryId != null ">
+                AND category_id = #{categoryId}
+            </if>
+
+            <if test="title != null and title != ''">
+                AND title = #{title}
+            </if>
+
+            <if test="subTitle != null and subTitle != ''">
+                AND sub_title = #{subTitle}
+            </if>
+
+            <if test="description != null and description != ''">
+                AND description = #{description}
+            </if>
+
+            <if test="keywords != null and keywords != ''">
+                AND keywords = #{keywords}
+            </if>
+
+            <if test="author != null and author != ''">
+                AND author = #{author}
+            </if>
+
+            <if test="content != null and content != ''">
+                AND content = #{content}
+            </if>
+
+            <if test="coverImage != null and coverImage != ''">
+                AND cover_image = #{coverImage}
+            </if>
+
+            <if test="status != null ">
+                AND `status` = #{status}
+            </if>
+
+            <if test="virtualClick != null ">
+                AND virtual_click = #{virtualClick}
+            </if>
+
+            <if test="click != null ">
+                AND click = #{click}
+            </if>
+
+            <if test="sort != null ">
+                AND sort = #{sort}
+            </if>
+
+            <if test="comment != null ">
+                AND `comment` = #{comment}
+            </if>
+
+            <if test="commend != null ">
+                AND commend = #{commend}
+            </if>
+
+            <if test="top != null ">
+                AND top = #{top}
+            </if>
+
+            <if test="likeCount != null ">
+                AND like_count = #{likeCount}
+            </if>
+
+            <if test="commentCount != null ">
+                AND comment_count = #{commentCount}
+            </if>
+
+            <if test="source != null and source != ''">
+                AND `source` = #{source}
+            </if>
+
+            <if test="sourceUrl != null and sourceUrl != ''">
+                AND source_url = #{sourceUrl}
+            </if>
+
+            <if test="redirectUrl != null and redirectUrl != ''">
+                AND redirect_url = #{redirectUrl}
+            </if>
+
+            <if test="extra != null and extra != ''">
+                AND extra = #{extra}
+            </if>
+
+            <if test="createdAt != null ">
+                AND created_at = #{createdAt}
+            </if>
+
+            <if test="updatedAt != null ">
+                AND updated_at = #{updatedAt}
+            </if>
+
+            <if test="deletedAt != null ">
+                AND deleted_at = #{deletedAt}
+            </if>
+            and deleted_at is null
+        </where>
+        order by sort desc ,id desc
+    </select>
+
+    <delete id="batchDeleteByPrimaryKey">
+
+    </delete>
+
+    <update id="logicalBatchDeleteByPrimaryKey">
+        update article set deleted_at = now() where id in
+        <foreach collection="ids" item="id" open="(" separator="," close=")" index="index">
+            #{id}
+        </foreach>
+    </update>
+
+    <select id="pagination" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from article where deleted_at is null and status = 1 limit #{page},#{size}
+    </select>
+
+    <select id="getAllByCategoryId" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from article where deleted_at is null and category_id = #{cid} and status = 1
+    </select>
+
+
+    <select id="getByTag" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from article where deleted_at is null and `status` = 1 and keywords like concat('%','${tag}','%')
+    </select>
+
+
+    <select id="getBySearch" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from article where deleted_at is null and status = 1 and ( title like concat('%','${q}','%') or keywords like
+        concat('%','${q}','%') OR `description` like concat('%','${q}','%') )
+    </select>
+
+    <select id="getRecommend" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"></include> from article where deleted_at is null and status = 1 order
+        by click desc limit #{limit}
+    </select>
+
+
+</mapper>
