@@ -42,6 +42,7 @@ public class AuthController {
         }
     }
 
+    @Deprecated
     @RequestMapping(value = "/login_by_miniprogram", method = RequestMethod.POST)
     public ServerResponse loginByMiniProgram(@RequestBody MiniProgramLoginRequest request) {
         userService.createUserByMiniProgram(request);

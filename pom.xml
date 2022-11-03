@@ -28,6 +28,7 @@
         <module>shop</module>
         <module>demo-auth</module>
         <module>spring-cloud-oauth2</module>
+        <module>auth-util</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>

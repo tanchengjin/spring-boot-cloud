@@ -1,0 +1,203 @@
+package com.tanchengjin.oauth2.gateway.conf;
+
+import com.nimbusds.jose.jwk.JWKSet;
+import com.nimbusds.jose.jwk.RSAKey;
+import com.nimbusds.jose.jwk.source.JWKSource;
+import com.nimbusds.jose.proc.SecurityContext;
+import com.tanchengjin.oauth2.gateway.flter.TokenAuthFilter;
+import lombok.SneakyThrows;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.security.authentication.AbstractAuthenticationToken;
+import org.springframework.security.config.annotation.web.configuration.OAuth2AuthorizationServerConfiguration;
+import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
+import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
+import org.springframework.security.config.web.server.ServerHttpSecurity;
+import org.springframework.security.oauth2.core.DelegatingOAuth2TokenValidator;
+import org.springframework.security.oauth2.jose.jws.SignatureAlgorithm;
+import org.springframework.security.oauth2.jwt.*;
+import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
+import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
+import org.springframework.security.oauth2.server.resource.authentication.ReactiveJwtAuthenticationConverterAdapter;
+import org.springframework.security.oauth2.server.resource.web.server.ServerBearerTokenAuthenticationConverter;
+import org.springframework.security.web.server.SecurityWebFilterChain;
+import reactor.core.publisher.Mono;
+
+import java.io.IOException;
+import java.security.KeyFactory;
+import java.security.KeyPair;
+import java.security.NoSuchAlgorithmException;
+import java.security.PublicKey;
+import java.security.cert.Certificate;
+import java.security.cert.CertificateFactory;
+import java.security.interfaces.RSAPrivateKey;
+import java.security.interfaces.RSAPublicKey;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.X509EncodedKeySpec;
+import java.util.UUID;
+
+/**
+ * 资源服务器配置
+ */
+@Configuration
+@EnableWebFluxSecurity
+public class ResourceServerConfig {
+
+    @Autowired
+    private AuthorizationManager authorizationManager;
+
+    @Value("${spring.security.oauth2.resourceserver.jwt.jwk-set-uri}")
+    private String jwkSetUri;
+
+    @Bean
+    public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) throws NoSuchAlgorithmException, IOException, InvalidKeySpecException {
+        http.oauth2ResourceServer()
+                .jwt()
+                .jwtAuthenticationConverter(jwtAuthenticationConverter())
+//                .jwtDecoder(jwtDecoder())
+//                .jwtDecoder(jwtDecoder())
+                .and()
+                // 认证成功后没有权限操作
+                .accessDeniedHandler(new AccessDeniedHandler())
+                // 还没有认证时发生认证异常，比如token过期，token不合法
+                .authenticationEntryPoint(new AccessAuthenticationEntryPoint())
+                // 将一个字符串token转换成一个认证对象
+                .bearerTokenConverter(new ServerBearerTokenAuthenticationConverter())
+                .and()
+                .authorizeExchange()
+                // 所有以 /auth/** 开头的请求全部放行
+                .pathMatchers("/auth/**", "/favicon.ico").permitAll()
+                // 所有的请求都交由此处进行权限判断处理
+                .anyExchange()
+                .access(authorizationManager)
+                .and()
+                .exceptionHandling()
+                .accessDeniedHandler(new AccessDeniedHandler())
+                .authenticationEntryPoint(new AccessAuthenticationEntryPoint())
+                .and()
+                .csrf()
+                .disable()
+                .addFilterAfter(new TokenAuthFilter(), SecurityWebFiltersOrder.AUTHENTICATION);
+
+        return http.build();
+    }
+
+    /**
+     * 从jwt令牌中获取认证对象
+     */
+    public Converter<Jwt, ? extends Mono<? extends AbstractAuthenticationToken>> jwtAuthenticationConverter() {
+
+        // 从jwt 中获取该令牌可以访问的权限
+        JwtGrantedAuthoritiesConverter authoritiesConverter = new JwtGrantedAuthoritiesConverter();
+        // 取消权限的前缀，默认会加上SCOPE_
+        authoritiesConverter.setAuthorityPrefix("SCOPE_");
+        // 从那个字段中获取权限
+        authoritiesConverter.setAuthoritiesClaimName("scope");
+
+        JwtAuthenticationConverter jwtAuthenticationConverter = new JwtAuthenticationConverter();
+        // 获取 principal name
+//        jwtAuthenticationConverter.setPrincipalClaimName("sub");
+        jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(authoritiesConverter);
+
+        return new ReactiveJwtAuthenticationConverterAdapter(jwtAuthenticationConverter);
+    }
+
+    /**
+     * 解码jwt
+     */
+//    public ReactiveJwtDecoder jwtDecoder() throws IOException, NoSuchAlgorithmException, InvalidKeySpecException {
+////        Resource resource = new FileSystemResource("/Users/huan/code/study/idea/spring-cloud-alibaba-parent/gateway-oauth2/new-authoriza-server-public-key.pem");
+////        String publicKeyStr = String.join("", Files.readAllLines(resource.getFile().toPath()));
+////        byte[] publicKeyBytes = Base64.getDecoder().decode("-----BEGIN PUBLIC KEY-----\n" +
+////                "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAygtpxsG1Cx+rdg+KEGZC\n" +
+////                "+k/MVS7atqSSprrDiybVDaZ5XcdvqWMwlup1XoKMhFJB96TdTBAkDov3zDP/2sMg\n" +
+////                "6xIa90WCUuVDXID/3QJOE8GtrrTdpaiICkUvFCKFOn2l0agqIQIrdT6YiSdmoqBj\n" +
+////                "wKtaCxIbO1ZP0pScx6VBpo+G+g03pCCbFjbYNRUkjjiC+vVkPABifG+B6kX9V7CT\n" +
+////                "ydx91WlR60PGjHCNN7dUPfhDllyNn/l+6M2SuNvAc6fXRQrlL3lWMyicNu+We4rV\n" +
+////                "tf3GQVdnSKKWN1PfA9TQvJWuGxDfoqhEoUnF+35fO5oy5LKIJvLCtLJIBTt+GAGC\n" +
+////                "CwIDAQAB\n" +
+////                "-----END PUBLIC KEY-----\n");
+//        String s = "c1R73cGB4tm2Ghx7vEc3iOqVJjrT86zL";
+//        X509EncodedKeySpec keySpec = new X509EncodedKeySpec(s.getBytes());
+//        KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+//        String algorithm = keyFactory.getAlgorithm();
+//        RSAPublicKey rsaPublicKey = (RSAPublicKey) keyFactory.generatePublic(keySpec);
+//        return NimbusReactiveJwtDecoder.withPublicKey(rsaPublicKey)
+//                .signatureAlgorithm(SignatureAlgorithm.RS256)
+//                .build();
+//    }
+
+//    @Bean
+//    public JWKSource<SecurityContext> jwkSource() throws NoSuchAlgorithmException {
+//        // 加载证书 读取类路径文件
+//        Resource resource = new FileSystemResource("/Users/huan/code/study/idea/spring-cloud-alibaba-parent/gateway-oauth2/new-authoriza-server.jks");
+//        // 创建秘钥工厂(加载读取证书数据)
+//        KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(resource, "123456".toCharArray());
+//        // 读取秘钥对(公钥、私钥)
+//        KeyPair keyPair = keyStoreKeyFactory.getKeyPair("new-authoriza-server", "123456".toCharArray());
+//        // 读取公钥
+//        RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
+//        // 读取私钥
+//        RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();
+//
+//        RSAKey rsaKey = new RSAKey.Builder(publicKey)
+//                .privateKey(privateKey)
+//                .keyID(UUID.randomUUID().toString())
+//                .build();
+//        JWKSet jwkSet = new JWKSet(rsaKey);
+//        return (jwkSelector, securityContext) -> jwkSelector.select(jwkSet);
+//    }
+
+    /**
+     * jwt 解码
+     */
+//    @Bean
+//    public JwtDecoder jwtDecoder(JWKSource<SecurityContext> jwkSource) {
+//        return OAuth2AuthorizationServerConfiguration.jwtDecoder(jwkSource);
+//    }
+
+
+//    @Bean
+//    public RSAPublicKey rsaPublicKey() {
+//        Resource resource = new ClassPathResource("public.key");
+//        InputStream is = null;
+//        try {
+//            is = resource.getInputStream();
+//            String publicKeyData = IoUtil.read(is).toString();
+//            X509EncodedKeySpec keySpec = new X509EncodedKeySpec((Base64.decode(publicKeyData)));
+//
+//            KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+//            RSAPublicKey rsaPublicKey = (RSAPublicKey) keyFactory.generatePublic(keySpec);
+//            return rsaPublicKey;
+//        } catch (IOException | NoSuchAlgorithmException | InvalidKeySpecException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
+
+    /**
+     * 基于Nimbus的jwt解码器，并增加了一些自定义校验策略
+     *
+     * @param validator the validator
+     * @return the jwt decoder
+     */
+    @SneakyThrows
+    @Bean
+    public JwtDecoder jwtDecoder(@Qualifier("delegatingTokenValidator") DelegatingOAuth2TokenValidator<Jwt> validator) {
+        CertificateFactory certificateFactory = CertificateFactory.getInstance("X.509");
+        // 从classpath路径读取cer公钥证书来配置解码器
+        ClassPathResource resource = new ClassPathResource("E:\\java\\demo-spring-cloud\\spring-cloud-oauth2\\oauth2-auth-gateway\\src\\main\\resources\\publickey.cer");
+        Certificate certificate = certificateFactory.generateCertificate(resource.getInputStream());
+        PublicKey publicKey = certificate.getPublicKey();
+        NimbusJwtDecoder nimbusJwtDecoder = NimbusJwtDecoder.withPublicKey((RSAPublicKey) publicKey).build();
+        nimbusJwtDecoder.setJwtValidator(validator);
+        return nimbusJwtDecoder;
+    }
+}

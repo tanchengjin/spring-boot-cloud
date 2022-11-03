@@ -5,7 +5,7 @@ spring:
     active: dev
   application:
     # 应用名称也是构成 Nacos 配置管理 dataId 字段的一部分 (当 config.prefix 为空时)
-    name: oauth2-auth
+    name: app-test
   cloud:
     nacos:
       # 服务注册发现

@@ -27,12 +27,18 @@ spring:
         metadata:
           management:
             context-path: ${server.servlet.context-path}/actuator
-  redis:
-    database: 0
-    port: 6379
-    host: 127.0.0.1
-    password:
-    timeout: 1000ms # 连接超时时间
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://127.0.0.1:8001/getPublicKey
+
+#  redis:
+#    database: 0
+#    port: 6379
+#    host: 127.0.0.1
+#    password:
+#    timeout: 1000ms # 连接超时时间
 #  sleuth:
 #    sampler:
 #      # ProbabilityBasedSampler 抽样策略
@@ -61,3 +67,4 @@ management:
   endpoint:
     health:
       show-details: always
+

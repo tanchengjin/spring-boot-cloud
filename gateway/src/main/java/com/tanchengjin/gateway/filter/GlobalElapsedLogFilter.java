@@ -10,11 +10,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
-import java.net.URI;
 import java.util.concurrent.TimeUnit;
 
 /**
- * <h1>全局接口耗时日志过滤器</h1>
+ * 全局接口耗时日志过滤器
  */
 @Component
 public class GlobalElapsedLogFilter implements GlobalFilter, Ordered {
@@ -29,7 +28,7 @@ public class GlobalElapsedLogFilter implements GlobalFilter, Ordered {
         return chain.filter(exchange).then(
                 // 后置逻辑
                 Mono.fromRunnable(() ->
-                        logger.info("[{}] elapsed: [{}ms]",
+                        logger.info("[{}] time: [{}ms]",
                                 uri, sw.getTime(TimeUnit.MILLISECONDS)))
         );
     }

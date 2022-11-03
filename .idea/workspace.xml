@@ -5,11 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9aa4e6c5-5d0e-4c1a-9606-dcb759cfb10a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4d8d5eb2-5f16-4212-94ec-b2c21a84884f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4d8d5eb2-5f16-4212-94ec-b2c21a84884f.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-util/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-gateway/src/main/java/com/tanchengjin/oauth2/gateway/conf/ResourceServerConfig.java.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/tanchengjin/gateway/filter/GlobalElapsedLogFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/tanchengjin/gateway/filter/GlobalElapsedLogFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-gateway/src/main/java/com/tanchengjin/oauth2/gateway/conf/AccessAuthenticationEntryPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-gateway/src/main/java/com/tanchengjin/oauth2/gateway/conf/AccessAuthenticationEntryPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-gateway/src/main/java/com/tanchengjin/oauth2/gateway/conf/AccessDeniedHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-gateway/src/main/java/com/tanchengjin/oauth2/gateway/conf/AccessDeniedHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-gateway/src/main/java/com/tanchengjin/oauth2/gateway/conf/AuthConstant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-gateway/src/main/java/com/tanchengjin/oauth2/gateway/conf/AuthorizationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-gateway/src/main/java/com/tanchengjin/oauth2/gateway/conf/AuthorizationManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-gateway/src/main/java/com/tanchengjin/oauth2/gateway/conf/IgnoreUrlsConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-gateway/src/main/java/com/tanchengjin/oauth2/gateway/conf/RedisConstant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-gateway/src/main/java/com/tanchengjin/oauth2/gateway/conf/RedisTemplateConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-gateway/src/main/java/com/tanchengjin/oauth2/gateway/conf/ResourceServerConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-gateway/src/main/java/com/tanchengjin/oauth2/gateway/flter/AuthGlobalFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-gateway/src/main/java/com/tanchengjin/oauth2/gateway/flter/AuthTokenFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-gateway/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-gateway/src/main/resources/jwt.jks" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-test/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-test/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-test/src/main/java/com/tanchengjin/oauth2/test/Oauth2TestApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-test/src/main/java/com/tanchengjin/oauth2/test/Oauth2TestApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-test/src/main/java/com/tanchengjin/oauth2/test/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-test/src/main/java/com/tanchengjin/oauth2/test/controller/IndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-test/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-test/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth/src/main/java/com/tanchengjin/oauth2/conf/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth/src/main/java/com/tanchengjin/oauth2/conf/security/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth/src/main/java/com/tanchengjin/oauth2/conf/security/oauth2/Oauth2AuthorizationServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth/src/main/java/com/tanchengjin/oauth2/conf/security/oauth2/Oauth2AuthorizationServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth/src/main/java/com/tanchengjin/oauth2/conf/security/oauth2/Oauth2ResourceServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth/src/main/java/com/tanchengjin/oauth2/conf/security/oauth2/Oauth2ResourceServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/mysql.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/mysql.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth/src/main/java/com/tanchengjin/oauth2/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth/src/main/java/com/tanchengjin/oauth2/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth/src/main/java/com/tanchengjin/oauth2/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth/src/main/java/com/tanchengjin/oauth2/controller/IndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth/src/main/resources/jwt.jks" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,12 +97,12 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/java/zytt/yutai/boot&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/java/jeewx-boot-master&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;4cb672f0dabb8196588d1846aec5ef9f&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -97,11 +122,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\java\demo-spring-cloud\auth-util\src\main\java\com\tanchengjin\auth" />
+      <recent name="E:\java\demo-spring-cloud\spring-cloud-oauth2\oauth2-auth\src\main\resources" />
+      <recent name="E:\java\demo-spring-cloud\spring-cloud-oauth2\oauth2-auth-gateway\src\main\resources" />
+      <recent name="E:\java\demo-spring-cloud\spring-cloud-oauth2\oauth2-auth-gateway\src\main\java\com\tanchengjin\oauth2\gateway\conf" />
       <recent name="E:\java\demo-spring-cloud\spring-cloud-oauth2\oauth2-auth\src\main\java\com\tanchengjin\oauth2\modules\article\mapper" />
-      <recent name="E:\java\demo-spring-cloud\spring-cloud-oauth2\oauth2-auth\src\main\java\com\tanchengjin\oauth2\modules\article\pojo" />
-      <recent name="E:\java\demo-spring-cloud\spring-cloud-oauth2\oauth2-auth\src\main\java\com\tanchengjin\oauth2\modules\article\service" />
-      <recent name="E:\java\demo-spring-cloud\spring-cloud-oauth2\oauth2-auth\src\main\java\com\tanchengjin\oauth2\conf\security\oauth2\provider" />
-      <recent name="E:\java\demo-spring-cloud\spring-cloud-oauth2\oauth2-auth\src\main\java\com\tanchengjin\oauth2\modules\user" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\java\demo-spring-cloud\spring-cloud-oauth2\oauth2-auth\src\main\java\com\tanchengjin\oauth2\modules\oauth\mapper" />
@@ -119,20 +144,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.Oauth2AuthenticationApplication">
-    <configuration name="UserDetailServiceImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.tanchengjin.oauth2.conf.UserDetailServiceImpl" />
-      <module name="oauth2-auth" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.tanchengjin.oauth2.conf.mybatis.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Spring Boot.Oauth2GatewayApplication">
     <configuration name="mysql.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
       <script-file value="$PROJECT_DIR$/sql/mysql.sql" />
       <script-mode>FILE</script-mode>
@@ -172,8 +184,11 @@
       </method>
     </configuration>
     <configuration name="Oauth2TestApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="ACTIVE_PROFILES" />
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="oauth2-auth-test" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.tanchengjin.oauth2.test.Oauth2TestApplication" />
+      <option name="UPDATE_ACTION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.tanchengjin.oauth2.test.*" />
@@ -185,7 +200,6 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.UserDetailServiceImpl" />
       <item itemvalue="Database Script.mysql.sql" />
       <item itemvalue="Spring Boot.GatewayApplication" />
       <item itemvalue="Spring Boot.Oauth2AuthenticationApplication" />
@@ -194,11 +208,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.Oauth2GatewayApplication" />
+        <item itemvalue="Spring Boot.Oauth2TestApplication" />
         <item itemvalue="Spring Boot.Oauth2AuthenticationApplication" />
         <item itemvalue="Database Script.mysql.sql" />
-        <item itemvalue="Spring Boot.Oauth2TestApplication" />
-        <item itemvalue="Spring Boot.Oauth2GatewayApplication" />
-        <item itemvalue="Application.UserDetailServiceImpl" />
       </list>
     </recent_temporary>
   </component>
@@ -237,6 +250,15 @@
       <workItem from="1664111258026" duration="880000" />
       <workItem from="1664157622522" duration="8763000" />
       <workItem from="1664199151241" duration="782000" />
+      <workItem from="1665650794449" duration="2072000" />
+      <workItem from="1665708238774" duration="12083000" />
+      <workItem from="1666225876732" duration="14133000" />
+      <workItem from="1666311387131" duration="612000" />
+      <workItem from="1666507686150" duration="11000" />
+      <workItem from="1666570539798" duration="21993000" />
+      <workItem from="1666656619399" duration="23325000" />
+      <workItem from="1666743212155" duration="18212000" />
+      <workItem from="1666830088173" duration="4487000" />
     </task>
     <servers />
   </component>
@@ -331,6 +353,126 @@
           <url>file://$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth/src/main/java/com/tanchengjin/oauth2/conf/UserDetailServiceImpl.java</url>
           <line>32</line>
           <option name="timeStamp" value="55" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth/src/main/java/com/tanchengjin/oauth2/conf/security/oauth2/CustomAccessDeniedHandler.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="56" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$PROJECT_DIR$/../../maven/repository/org/springframework/security/oauth/spring-security-oauth2/2.3.4.RELEASE/spring-security-oauth2-2.3.4.RELEASE.jar!/org/springframework/security/oauth2/common/exceptions/UnapprovedClientAuthenticationException.class</url>
+          <line>15</line>
+          <option name="timeStamp" value="62" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$PROJECT_DIR$/../../maven/repository/org/springframework/security/oauth/spring-security-oauth2/2.3.4.RELEASE/spring-security-oauth2-2.3.4.RELEASE.jar!/org/springframework/security/oauth2/client/http/AccessTokenRequiredException.class</url>
+          <line>29</line>
+          <option name="timeStamp" value="63" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$PROJECT_DIR$/../../maven/repository/org/springframework/security/oauth/spring-security-oauth2/2.3.4.RELEASE/spring-security-oauth2-2.3.4.RELEASE.jar!/org/springframework/security/oauth2/client/http/AccessTokenRequiredException.class</url>
+          <line>14</line>
+          <option name="timeStamp" value="65" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$PROJECT_DIR$/../../maven/repository/org/springframework/security/oauth/spring-security-oauth2/2.3.4.RELEASE/spring-security-oauth2-2.3.4.RELEASE.jar!/org/springframework/security/oauth2/common/exceptions/UnapprovedClientAuthenticationException.class</url>
+          <line>11</line>
+          <option name="timeStamp" value="66" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$PROJECT_DIR$/../../maven/repository/org/springframework/security/oauth/spring-security-oauth2/2.3.4.RELEASE/spring-security-oauth2-2.3.4.RELEASE.jar!/org/springframework/security/oauth2/provider/endpoint/CheckTokenEndpoint.class</url>
+          <line>63</line>
+          <option name="timeStamp" value="67" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-gateway/src/main/java/com/tanchengjin/oauth2/gateway/config/AuthorizationManager.java</url>
+          <line>72</line>
+          <option name="timeStamp" value="70" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-gateway/src/main/java/com/tanchengjin/oauth2/gateway/config/AuthorizationManager.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="71" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-test/src/main/java/com/tanchengjin/oauth2/test/filter/AuthenticationFilter.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="72" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-test/src/main/java/com/tanchengjin/oauth2/test/filter/AuthenticationFilter.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="73" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/gateway/src/main/java/com/tanchengjin/gateway/filter/AuthGlobalFilter.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="82" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/gateway/src/main/java/com/tanchengjin/gateway/filter/AuthGlobalFilter.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="88" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-test/src/main/java/com/tanchengjin/oauth2/test/util/AuthUtil.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="96" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-test/src/main/java/com/tanchengjin/oauth2/test/util/AuthUtil.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="101" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-gateway/src/main/java/com/tanchengjin/oauth2/gateway/conf/AccessDeniedHandler.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="107" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-test/src/main/java/com/tanchengjin/oauth2/test/util/AuthUtil.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="108" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-gateway/src/main/java/com/tanchengjin/oauth2/gateway/conf/AuthorizationManager.java</url>
+          <line>93</line>
+          <option name="timeStamp" value="116" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-gateway/src/main/java/com/tanchengjin/oauth2/gateway/conf/AccessAuthenticationEntryPoint.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="124" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-gateway/src/main/java/com/tanchengjin/oauth2/gateway/conf/AccessDeniedHandler.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="125" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-gateway/src/main/java/com/tanchengjin/oauth2/gateway/flter/TokenAuthFilter.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="128" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-gateway/src/main/java/com/tanchengjin/oauth2/gateway/flter/TokenAuthFilter.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="129" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-gateway/src/main/java/com/tanchengjin/oauth2/gateway/conf/AuthorizationManager.java</url>
+          <line>104</line>
+          <option name="timeStamp" value="133" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-gateway/src/main/java/com/tanchengjin/oauth2/gateway/flter/TokenAuthFilter.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="134" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-cloud-oauth2/oauth2-auth-gateway/src/main/java/com/tanchengjin/oauth2/gateway/flter/AuthTokenFilter.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="135" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

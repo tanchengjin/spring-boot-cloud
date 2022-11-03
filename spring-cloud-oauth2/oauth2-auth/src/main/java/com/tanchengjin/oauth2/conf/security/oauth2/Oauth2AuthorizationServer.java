@@ -6,7 +6,9 @@ import com.tanchengjin.oauth2.conf.security.oauth2.provider.sms.SMSTokenGranter;
 import com.tanchengjin.oauth2.modules.user.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.annotation.Order;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,13 +19,15 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.CompositeTokenGranter;
 import org.springframework.security.oauth2.provider.TokenGranter;
+import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
+import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
 
-import javax.servlet.http.HttpServletRequest;
+import java.security.KeyPair;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -84,7 +88,8 @@ public class Oauth2AuthorizationServer extends AuthorizationServerConfigurerAdap
                 .tokenGranter(tokenGranter(endpoints))
                 .accessTokenConverter(jwtAccessTokenConverter())
                 .userDetailsService(userDetailsService)
-                .tokenEnhancer(tokenEnhancerChain);
+                .tokenEnhancer(tokenEnhancerChain)
+                .tokenStore(tokenStore());
 //            endpoints.authenticationManager(authenticationManager)
 //                    .userDetailsService(userDetailsService)
 //                    .tokenStore(tokenStore);
@@ -109,7 +114,7 @@ public class Oauth2AuthorizationServer extends AuthorizationServerConfigurerAdap
 //        granters.add(new ImplicitTokenGranter(endpoints.getTokenServices(), endpoints.getClientDetailsService(), endpoints.getOAuth2RequestFactory()));
 
         //手机号+密码
-        granters.add(new MobilePasswordTokenGranter(authenticationManager, endpoints.getTokenServices(), endpoints.getClientDetailsService(),endpoints.getOAuth2RequestFactory()));
+        granters.add(new MobilePasswordTokenGranter(authenticationManager, endpoints.getTokenServices(), endpoints.getClientDetailsService(), endpoints.getOAuth2RequestFactory()));
         //手机号+验证码
         granters.add(new SMSTokenGranter(endpoints.getTokenServices(), endpoints.getClientDetailsService(), endpoints.getOAuth2RequestFactory(), authenticationManager));
         //miniprogram
@@ -124,18 +129,18 @@ public class Oauth2AuthorizationServer extends AuthorizationServerConfigurerAdap
                 .secret(passwordEncoder.encode("2211e824-efcb-43c2-ab8d-576bd364ddd3"))
                 .accessTokenValiditySeconds(3600)
                 .refreshTokenValiditySeconds(86400)
-                .authorizedGrantTypes("password", "refresh_token", "mobile_password", "sms","miniprogram")
-                .scopes("all");
+                .authorizedGrantTypes("password", "refresh_token", "mobile_password", "sms", "miniprogram")
+                .scopes("admin","all","global");
 
     }
 
-//    @Bean
-//    @Primary
-//    public DefaultTokenServices defaultTokenServices() {
-//        DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
-//        defaultTokenServices.setTokenStore(new InMemoryTokenStore());
-//        return defaultTokenServices;
-//    }
+    @Bean
+    @Primary
+    public DefaultTokenServices defaultTokenServices() {
+        DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
+        defaultTokenServices.setTokenStore(tokenStore());
+        return defaultTokenServices;
+    }
 
 
     /**
@@ -146,8 +151,21 @@ public class Oauth2AuthorizationServer extends AuthorizationServerConfigurerAdap
     @Bean
     public JwtAccessTokenConverter jwtAccessTokenConverter() {
         JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
-        jwtAccessTokenConverter.setSigningKey("c1R73cGB4tm2Ghx7vEc3iOqVJjrT86zL");
+        jwtAccessTokenConverter.setKeyPair(keyPair());
+//        jwtAccessTokenConverter.setSigningKey("c1R73cGB4tm2Ghx7vEc3iOqVJjrT86zL");
         return jwtAccessTokenConverter;
+    }
+
+    /**
+     * 从classpath下的密钥库中获取密钥对(公钥+私钥)
+     */
+    @Bean
+    public KeyPair keyPair() {
+        KeyStoreKeyFactory factory = new KeyStoreKeyFactory(
+                new ClassPathResource("jwt.jks"), "baojian".toCharArray());
+        KeyPair keyPair = factory.getKeyPair(
+                "baojian", "baojian".toCharArray());
+        return keyPair;
     }
 
     /**
@@ -159,10 +177,10 @@ public class Oauth2AuthorizationServer extends AuthorizationServerConfigurerAdap
     @Bean
     public TokenStore tokenStore() {
         //保存到内存
-        return new InMemoryTokenStore();
+//        return new InMemoryTokenStore();
         //保存到redis中
 //        return new RedisTokenStore();
-//        return new JwtTokenStore(jwtAccessTokenConverter());
+        return new JwtTokenStore(jwtAccessTokenConverter());
     }
 
 //    @Bean
@@ -178,5 +196,27 @@ public class Oauth2AuthorizationServer extends AuthorizationServerConfigurerAdap
         return new CustomTokenEnhancer();
     }
 
-
+    /**
+     * 对JWT进行签名的 加解密密钥
+     */
+//    @Bean
+//    public JWKSource<SecurityContext> jwkSource() throws NoSuchAlgorithmException {
+//        // 加载证书 读取类路径文件
+//        Resource resource = new FileSystemResource("/Users/huan/code/study/idea/spring-cloud-alibaba-parent/gateway-oauth2/new-authoriza-server.jks");
+//        // 创建秘钥工厂(加载读取证书数据)
+//        KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(resource, "123456".toCharArray());
+//        // 读取秘钥对(公钥、私钥)
+//        KeyPair keyPair = keyStoreKeyFactory.getKeyPair("new-authoriza-server", "123456".toCharArray());
+//        // 读取公钥
+//        RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
+//        // 读取私钥
+//        RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();
+//
+//        RSAKey rsaKey = new RSAKey.Builder(publicKey)
+//                .privateKey(privateKey)
+//                .keyID(UUID.randomUUID().toString())
+//                .build();
+//        JWKSet jwkSet = new JWKSet(rsaKey);
+//        return (jwkSelector, securityContext) -> jwkSelector.select(jwkSet);
+//    }
 }
