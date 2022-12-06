@@ -1,0 +1,46 @@
+server:
+  port: 10001
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: shop-order
+  cloud:
+    nacos:
+      discovery:
+        enabled: true # 是否开启Nacos服务注册与发现
+        server-addr: 127.0.0.1:8848 # Nacos 服务器地址
+        namespace: 13f6bf83-e288-4d6e-9cc6-1354184b72da
+        metadata:
+          management:
+            context-path: ${server.servlet.context-path}/actuator
+#        ip: 127.0.0.1 #固定IP
+  main:
+    allow-bean-definition-overriding: true #允许重名Bean
+  datasource:
+    # 数据源
+    url: jdbc:mysql://127.0.0.1:3306/demo-spring-boot?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: root
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 连接池
+    hikari:
+      maximum-pool-size: 8
+      minimum-idle: 4
+      idle-timeout: 30000
+      connection-timeout: 30000
+      max-lifetime: 45000
+      auto-commit: true
+      pool-name: ImoocEcommerceHikariCP
+
+# 暴露端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always

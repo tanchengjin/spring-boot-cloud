@@ -19,7 +19,7 @@ public class Oauth2ResourceServer extends ResourceServerConfigurerAdapter {
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED);
 
         http.authorizeRequests()
-                .antMatchers("/auth/**", "/oauth/token", "/articles/**","/getPublicKey").permitAll()
+                .antMatchers("/auth/**", "/oauth/token", "/articles/**","/getPublicKey","/qrcode/uuid").permitAll()
                 .antMatchers("/**").access("#oauth2.hasScope('all')");
 //                .anyRequest().authenticated();
 

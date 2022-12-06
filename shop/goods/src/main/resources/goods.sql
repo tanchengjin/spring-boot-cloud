@@ -67,7 +67,7 @@ create table spec_param
 ) comment ='参数表';
 
 
-create table if not exists `shop_product`
+create table if not exists `shop_goods`
 (
     `id`          bigint unsigned auto_increment,
     `title`       varchar(200)            not null COMMENT '标题',

@@ -38,7 +38,14 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
      * 白名单列表
      */
     private static final String[] whiteArray = {
-            "/app-test/user", "/app-test/test"
+            "/app-test/user",
+            "/app-test/test",
+            "/oauth2-auth/oauth/token",
+            "/oauth2-auth/auth/qrcode",
+            "/oauth2-auth/auth/qrcode/uuid",
+            "/oauth2-auth/auth/qrcode/info",
+            "/oauth2-auth/auth/qrcode-info/**",
+            "/oauth2-auth/auth/qrcode/token/**"
     };
 
     @PostConstruct
@@ -47,6 +54,7 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
         AUTH_MAP.put("/user/addUser", "ROLE_ADMIN");
         AUTH_MAP.put("/app-test/test", "ROLE_ADMIN");
         AUTH_MAP.put("/app-test/user", "ROLE_ADMIN");
+//        AUTH_MAP.put("/oauth2-auth/oauth/token", "ROLE_ADMIN");
     }
 
     @Override
@@ -68,9 +76,12 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
 
         //白名单放行
         List<String> whiteList = Arrays.asList(whiteArray);
-        if (whiteList.contains(path)) {
+        if(this.pathContains(whiteList,path))
+        {
             return Mono.just(new AuthorizationDecision(true));
         }
+//        if (whiteList.contains(path)) {
+//        }
         // 不在权限范围内的url，全部拒绝
 //        if (!StringUtils.hasText(authorities)) {
 //            return Mono.just(new AuthorizationDecision(false));
@@ -107,4 +118,15 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
                 .map(AuthorizationDecision::new)
                 .defaultIfEmpty(new AuthorizationDecision(false));
     }
+
+    private boolean pathContains(List<String> paths, String path) {
+        AntPathMatcher antPathMatcher = new AntPathMatcher();
+        for (String s : paths) {
+            if (antPathMatcher.match(s, path)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

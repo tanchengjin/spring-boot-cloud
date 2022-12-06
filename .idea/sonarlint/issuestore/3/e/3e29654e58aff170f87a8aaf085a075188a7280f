@@ -1,0 +1,13 @@
+
+_
+java:S1192¥"HDefine a constant instead of duplicating this literal "baojian" 3 times.(†žôŽ
+v
+java:S1488¦"_Immediately return this expression instead of assigning it to the temporary variable "keyPair".(ý±á§
+V	java:S125_"<This block of commented-out lines of code should be removed.(¾“Æäûÿÿÿÿ
+Q	java:S125l"<This block of commented-out lines of code should be removed.(’´Þª
+W	java:S125›"<This block of commented-out lines of code should be removed.(¼ñ¾°þÿÿÿÿ
+R	java:S125´"<This block of commented-out lines of code should be removed.(¿’Úç
+W	java:S125»"<This block of commented-out lines of code should be removed.(ÈÑìˆþÿÿÿÿ
+W	java:S125Ë"<This block of commented-out lines of code should be removed.(¨†„Üøÿÿÿÿ
+J
+java:S1068+"/Remove this unused "userService" private field.(ÇêÞ¢ýÿÿÿÿ

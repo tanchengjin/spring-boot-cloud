@@ -9,8 +9,10 @@
     <file url="file://$PROJECT_DIR$/demo-authentication/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo-test/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/shop/goods-api/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/shop/goods/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/shop/goods/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/shop/order/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/shop/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/shop/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/shop/user/src/main/java" charset="UTF-8" />
