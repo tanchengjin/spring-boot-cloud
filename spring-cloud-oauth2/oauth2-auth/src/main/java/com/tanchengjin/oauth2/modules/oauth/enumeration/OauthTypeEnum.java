@@ -7,21 +7,23 @@ public enum OauthTypeEnum {
     /**
      * 小程序
      */
-    MINIPROGRAM("miniprogram", "小程序");
+    MINIPROGRAM("miniprogram", "小程序"),
+    GITEE("gitee", "Gitee"),
+    WEIBO("weibo", "新浪微博");
     private final String type;
 
-    private final String description;
+    private final String name;
 
-    OauthTypeEnum(String type, String description) {
+    OauthTypeEnum(String type, String name) {
         this.type = type;
-        this.description = description;
+        this.name = name;
     }
 
     public String getType() {
         return type;
     }
 
-    public String getDescription() {
-        return description;
+    public String getName() {
+        return name;
     }
 }

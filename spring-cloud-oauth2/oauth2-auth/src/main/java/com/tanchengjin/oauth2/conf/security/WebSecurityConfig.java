@@ -4,6 +4,7 @@ import com.tanchengjin.oauth2.conf.security.oauth2.provider.MobilePasswordAuthen
 import com.tanchengjin.oauth2.conf.security.oauth2.provider.miniprogram.MiniProgramAuthenticationProvider;
 import com.tanchengjin.oauth2.conf.security.oauth2.provider.sms.SMSAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +18,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @Author TanChengjin
  * @Email 18865477815@163.com
@@ -29,6 +33,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final PasswordEncoder passwordEncoder;
 
     private final UserDetailsService userDetailsService;
+
+    private List<String> excludeUrl = new ArrayList<>();
 
     @Autowired
     private MobilePasswordAuthenticationProvider mobilePasswordAuthenticationProvider;
@@ -89,9 +95,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        excludeUrl.add("/getPublicKey");
         http.authorizeRequests().requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll()
                 .and()
-                .authorizeRequests().antMatchers("/getPublicKey").permitAll().anyRequest().authenticated()
+                .authorizeRequests().antMatchers(excludeUrl.toArray(new String[]{})).permitAll().anyRequest().authenticated()
                 .and()
                 .csrf().disable();
     }

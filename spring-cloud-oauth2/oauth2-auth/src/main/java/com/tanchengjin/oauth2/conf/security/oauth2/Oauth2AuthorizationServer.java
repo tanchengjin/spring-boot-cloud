@@ -19,10 +19,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.CompositeTokenGranter;
 import org.springframework.security.oauth2.provider.TokenGranter;
-import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
-import org.springframework.security.oauth2.provider.token.TokenEnhancer;
-import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
-import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.*;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
@@ -90,9 +87,20 @@ public class Oauth2AuthorizationServer extends AuthorizationServerConfigurerAdap
                 .userDetailsService(userDetailsService)
                 .tokenEnhancer(tokenEnhancerChain)
                 .tokenStore(tokenStore());
-//            endpoints.authenticationManager(authenticationManager)
-//                    .userDetailsService(userDetailsService)
-//                    .tokenStore(tokenStore);
+
+        //将用户信息放入到principal
+        DefaultAccessTokenConverter defaultAccessTokenConverter = new DefaultAccessTokenConverter();
+        DefaultUserAuthenticationConverter defaultUserAuthenticationConverter = new DefaultUserAuthenticationConverter();
+        defaultUserAuthenticationConverter.setUserDetailsService(userDetailsService);
+        defaultAccessTokenConverter.setUserTokenConverter(defaultUserAuthenticationConverter);
+        endpoints.accessTokenConverter(defaultAccessTokenConverter);
+    }
+
+    @Bean
+    public UserAuthenticationConverter userAuthenticationConverter() {
+        DefaultUserAuthenticationConverter defaultUserAuthenticationConverter = new DefaultUserAuthenticationConverter();
+        defaultUserAuthenticationConverter.setUserDetailsService(userDetailsService);
+        return defaultUserAuthenticationConverter;
     }
 
 
@@ -130,7 +138,7 @@ public class Oauth2AuthorizationServer extends AuthorizationServerConfigurerAdap
                 .accessTokenValiditySeconds(3600)
                 .refreshTokenValiditySeconds(86400)
                 .authorizedGrantTypes("password", "refresh_token", "mobile_password", "sms", "miniprogram")
-                .scopes("admin","all","global");
+                .scopes("admin", "all", "global");
 
     }
 
@@ -151,8 +159,15 @@ public class Oauth2AuthorizationServer extends AuthorizationServerConfigurerAdap
     @Bean
     public JwtAccessTokenConverter jwtAccessTokenConverter() {
         JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
+//        jwtAccessTokenConverter.extractAccessToken();
+//        JwtTokenEnhancer jwtTokenEnhancer = new JwtTokenEnhancer();
         jwtAccessTokenConverter.setKeyPair(keyPair());
 //        jwtAccessTokenConverter.setSigningKey("c1R73cGB4tm2Ghx7vEc3iOqVJjrT86zL");
+//        jwtAccessTokenConverter.setAccessTokenConverter();
+        final AccessTokenConverter accessTokenConverter = jwtAccessTokenConverter.getAccessTokenConverter();
+        if (accessTokenConverter instanceof DefaultAccessTokenConverter) {
+            ((DefaultAccessTokenConverter) accessTokenConverter).setUserTokenConverter(userAuthenticationConverter());
+        }
         return jwtAccessTokenConverter;
     }
 

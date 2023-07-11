@@ -38,4 +38,5 @@ public interface OauthMapper extends BaseMapper<Oauth> {
 
     boolean existsByToken(String token);
 
+    List<Oauth> selectListByUserId(String userId);
 }

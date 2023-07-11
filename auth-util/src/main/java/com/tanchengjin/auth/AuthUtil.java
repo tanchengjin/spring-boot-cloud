@@ -12,11 +12,11 @@ import java.util.Map;
  * @Since V1.0.0
  **/
 public class AuthUtil {
-    public static User getUser(HttpServletRequest request) {
+    public static Userinfo getUser(HttpServletRequest request) {
         Map userOfHeader = getUserOfHeader(request);
-        User user = new User();
-        if (userOfHeader.containsKey("userId")) {
-            user.setId(userOfHeader.get("userId").toString());
+        Userinfo user = new Userinfo();
+        if (userOfHeader.containsKey("user_id")) {
+            user.setId(userOfHeader.get("user_id").toString());
         }
         if (userOfHeader.containsKey("user_name")) {
             user.setUsername(userOfHeader.get("user_name").toString());

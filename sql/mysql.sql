@@ -8,7 +8,7 @@ create table if not exists common
     `created_by` bigint          not null comment '创建人',
     `updated_by` bigint          not null comment '更新人',
     `tenant_id`  int(6) unsigned not null default 999999 comment '租户id'
-)comment '公用字段';
+) comment '公用字段';
 
 create table if not exists `user`
 (
@@ -72,7 +72,7 @@ create table if not exists `article_category`
     `tenant_id`  int(6) unsigned not null default 888888 comment '租户id'
 ) engine = InnoDB
   charset = UTF8 comment '文章分类表'
-  auto_increment = 100 ;
+  auto_increment = 100;
 
 create table if not exists article
 (
@@ -104,4 +104,22 @@ create table if not exists article
     `created_by`  bigint                         not null comment '创建人',
     `updated_by`  bigint                         not null comment '更新人',
     `tenant_id`   int(6) unsigned                not null default 888888 comment '租户id'
-) auto_increment = 100 comment '文章表' charset = utf8 engine=InnoDB;
+) auto_increment = 100 comment '文章表'
+  charset = utf8
+  engine = InnoDB;
+
+create table if not exists `banner`
+(
+    `id`         int unsigned primary key auto_increment,
+    `title`      varchar(100)    null     default '' comment '标题',
+    `platform`   varchar(100)    not null default 'WEB' comment '平台',
+    `type`       tinyint(2)      not null default 1 comment 'banner类型，1：图片，2：视频',
+    `url`        varchar(255)    not null comment '图片/视频地址',
+    `enable`     boolean         not null default 1 comment '是否有效',
+    `sort`       int(6) unsigned not null default 0 comment '排序',
+    `link`       varchar(255)    null     default null comment '跳转链接',
+    `created_at` datetime        not null default CURRENT_TIMESTAMP,
+    `updated_at` datetime        not null default CURRENT_TIMESTAMP,
+    `deleted_at` datetime        null     default null,
+    index idx_platform (`platform`)
+) comment 'banner';

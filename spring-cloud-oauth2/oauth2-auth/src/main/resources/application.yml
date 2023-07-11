@@ -71,3 +71,16 @@ management:
   endpoint:
     health:
       show-details: always
+
+app:
+  exclude-url:
+    - /demo-redis/**,
+    - /app-test/user,
+    - /app-test/test,
+    - /oauth2-auth/oauth/token,
+    - /oauth2-auth/auth/qrcode,
+    - /oauth2-auth/auth/qrcode/uuid,
+    - /oauth2-auth/auth/qrcode/info,
+    - /oauth2-auth/auth/qrcode-info/**,
+    - /oauth2-auth/auth/qrcode/token/**,
+    - /demo-redis/**

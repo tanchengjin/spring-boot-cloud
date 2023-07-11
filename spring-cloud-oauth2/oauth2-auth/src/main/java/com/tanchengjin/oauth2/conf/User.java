@@ -1,5 +1,6 @@
 package com.tanchengjin.oauth2.conf;
 
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -12,9 +13,16 @@ import java.util.Collection;
  * @Email 18865477815@163.com
  * @Since V1.0.0
  **/
+@Data
 public class User implements UserDetails, Serializable {
+    private Long id;
+
     private String username;
     private String password;
+
+    private String phone;
+
+    private String avatar;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

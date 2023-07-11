@@ -3,6 +3,7 @@ package com.tanchengjin.oauth2.gateway.conf;
 import com.google.common.collect.Maps;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
@@ -45,7 +46,9 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
             "/oauth2-auth/auth/qrcode/uuid",
             "/oauth2-auth/auth/qrcode/info",
             "/oauth2-auth/auth/qrcode-info/**",
-            "/oauth2-auth/auth/qrcode/token/**"
+            "/oauth2-auth/auth/qrcode/token/**",
+            "/demo-redis/**",
+            "/oauth2-auth/auth/gitee/callback",
     };
 
     @PostConstruct
@@ -67,6 +70,7 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
         // 带通配符的可以使用这个进行匹配
         PathMatcher pathMatcher = new AntPathMatcher();
         String authorities = AUTH_MAP.get(path);
+
         logger.info("访问路径:[{}],所需要的权限是:[{}]", path, authorities);
 
         // option 请求，全部放行
@@ -76,8 +80,7 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
 
         //白名单放行
         List<String> whiteList = Arrays.asList(whiteArray);
-        if(this.pathContains(whiteList,path))
-        {
+        if (this.pathContains(whiteList, path)) {
             return Mono.just(new AuthorizationDecision(true));
         }
 //        if (whiteList.contains(path)) {
@@ -120,6 +123,7 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
     }
 
     private boolean pathContains(List<String> paths, String path) {
+        //带通配符*的匹配
         AntPathMatcher antPathMatcher = new AntPathMatcher();
         for (String s : paths) {
             if (antPathMatcher.match(s, path)) {

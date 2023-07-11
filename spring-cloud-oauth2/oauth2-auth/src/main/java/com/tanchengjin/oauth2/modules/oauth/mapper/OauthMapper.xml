@@ -235,6 +235,9 @@
     <select id="existsByToken" resultType="java.lang.Boolean">
         select count(1) from oauth where token = #{token}
     </select>
+    <select id="selectListByUserId" resultType="com.tanchengjin.oauth2.modules.oauth.pojo.Oauth">
+        select * from oauth where user_id = #{userId}
+    </select>
 
     <delete id="batchDeleteByPrimaryKey">
 

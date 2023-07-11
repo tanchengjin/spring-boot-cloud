@@ -25,11 +25,14 @@
         <module>common-sdk</module>
         <module>common-util</module>
         <module>demo-test</module>
+        <module>demo-redis</module>
         <module>shop</module>
         <module>demo-auth</module>
         <module>spring-cloud-oauth2</module>
         <module>auth-util</module>
         <module>shop/goods-api</module>
+        <module>MQ</module>
+        <module>demo-modules</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>
@@ -70,6 +73,11 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.tanchengjin</groupId>
+            <artifactId>util</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
     <!-- 配置远程仓库 -->

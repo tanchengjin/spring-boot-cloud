@@ -1,15 +1,11 @@
 package com.tanchengjin.oauth2.conf;
 
 import com.tanchengjin.oauth2.modules.user.service.UserService;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 
 /**
  * @Author TanChengjin
@@ -34,6 +30,13 @@ public class UserDetailServiceImpl implements UserDetailsService {
 //        user.setUsername("root");
 //        user.setPassword(passwordEncoder.encode("root"));
         AuthorityUtils.commaSeparatedStringToAuthorityList("normal");
-        return new org.springframework.security.core.userdetails.User(userByUsername.getUsername(), userByUsername.getPassword(), new ArrayList<GrantedAuthority>());
+        User user = new User();
+        user.setId(userByUsername.getId());
+        user.setUsername(userByUsername.getUsername());
+        user.setAvatar(userByUsername.getAvatar());
+        user.setPhone(userByUsername.getPhone());
+        user.setPassword(userByUsername.getPassword());
+        return user;
+//        return new org.springframework.security.core.userdetails.User(userByUsername.getUsername(), userByUsername.getPassword(), new ArrayList<GrantedAuthority>());
     }
 }

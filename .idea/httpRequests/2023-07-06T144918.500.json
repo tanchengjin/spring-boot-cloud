@@ -1,0 +1,7 @@
+{
+  "timestamp": "2023-07-06 06:49:18",
+  "status": 500,
+  "error": "Internal Server Error",
+  "message": "",
+  "path": "/articles/3"
+}

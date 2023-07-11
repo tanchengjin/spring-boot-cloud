@@ -1,0 +1,67 @@
+server:
+  port: 6688
+spring:
+  profiles:
+    active: dev
+  application:
+    # 应用名称也是构成 Nacos 配置管理 dataId 字段的一部分 (当 config.prefix 为空时)
+    name: demo-redis
+  cloud:
+    nacos:
+      # 服务注册发现
+      discovery:
+        enabled: true # 如果不想使用 Nacos 进行服务注册和发现, 设置为 false 即可
+        server-addr: 127.0.0.1:8848
+        # server-addr: 127.0.0.1:8848,127.0.0.1:8849,127.0.0.1:8850 # Nacos 服务器地址
+        namespace: 13f6bf83-e288-4d6e-9cc6-1354184b72da
+        metadata:
+          management:
+            context-path: ${server.servlet.context-path}/actuator
+      # 配置管理
+      config:
+#        prefix: nacos-client
+        file-extension: yaml  # 配置内容的数据格式, 默认为 properties
+        enabled: true     # 如果不想使用 Nacos 进行配置管理, 设置为 false 即可
+        group: DEFAULT_GROUP  # 组, 默认为 DEFAULT_GROUP
+        namespace: 13f6bf83-e288-4d6e-9cc6-1354184b72da
+        server-addr: 127.0.0.1:8848
+#        shared-configs:
+#          - application.yaml
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    ################ Redis 基础配置 ##############
+  redis:
+    database: 0
+    port: 6379
+    host: 127.0.0.1
+    password:
+    timeout: 3000
+    ################ Redis 线程池设置 ##############
+    jedis:
+      pool:
+        min-idle: 0
+        max-active: 8
+        max-idle: 8
+        max-wait: -1ms
+#    lettuce:
+#      pool:
+#        # 连接池最大连接数（使用负值表示没有限制） 默认 8
+#        max-active: 8
+#        # 连接池中的最大空闲连接 默认 8
+#        max-idle: 8
+#          #连接池最大阻塞等待时间（使用负值表示没有限制） 默认 -1
+#        max-wait: -1
+#        # 连接池中的最小空闲连接 默认 0
+#        min-idle: 0
+# 暴露端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+app:
+  exclude:
+    - /asd

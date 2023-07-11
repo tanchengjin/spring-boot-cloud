@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tanchengjin.cms.modules.article.mapper.ArticleCategoryMapper">
+
+    <resultMap type="com.tanchengjin.cms.modules.article.pojo.ArticleCategory" id="BaseResultMap">
+                <result column="id" jdbcType="INTEGER"
+                        property="id"/>
+                <result column="name" jdbcType="VARCHAR"
+                        property="name"/>
+                <result column="parent_id" jdbcType="INTEGER"
+                        property="parentId"/>
+                <result column="path" jdbcType="VARCHAR"
+                        property="path"/>
+                <result column="sort" jdbcType="INTEGER"
+                        property="sort"/>
+                <result column="status" jdbcType="TINYINT"
+                        property="status"/>
+                <result column="created_at" jdbcType="TIMESTAMP"
+                        property="createdAt"/>
+                <result column="updated_at" jdbcType="TIMESTAMP"
+                        property="updatedAt"/>
+                <result column="deleted_at" jdbcType="TIMESTAMP"
+                        property="deletedAt"/>
+                <result column="created_by" jdbcType="BIGINT"
+                        property="createdBy"/>
+                <result column="updated_by" jdbcType="BIGINT"
+                        property="updatedBy"/>
+                <result column="tenant_id" jdbcType="INTEGER"
+                        property="tenantId"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+id ,`name` ,parent_id ,path ,sort ,`status` ,created_at ,updated_at ,deleted_at ,created_by ,updated_by ,tenant_id    </sql>
+
+
+    <select id="selectByPrimaryKey" parameterType="int" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from article_category
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+
+    <delete id="deleteByPrimaryKey" parameterType="int">
+        delete from article_category where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+
+    <insert id="insert" parameterType="com.tanchengjin.cms.modules.article.pojo.ArticleCategory"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into article_category (id ,`name` ,parent_id ,path ,sort ,`status` ,created_at ,updated_at ,deleted_at ,created_by ,updated_by ,tenant_id)
+        values(#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER}, #{path,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}, #{deletedAt,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=BIGINT}, #{updatedBy,jdbcType=BIGINT}, #{tenantId,jdbcType=INTEGER},)
+    </insert>
+
+
+    <insert id="insertSelective" parameterType="com.tanchengjin.cms.modules.article.pojo.ArticleCategory"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into article_category
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+    <if test="id != null">
+    id,
+    </if>
+    <if test="name != null">
+    `name`,
+    </if>
+    <if test="parentId != null">
+    parent_id,
+    </if>
+    <if test="path != null">
+    path,
+    </if>
+    <if test="sort != null">
+    sort,
+    </if>
+    <if test="status != null">
+    `status`,
+    </if>
+    <if test="createdAt != null">
+    created_at,
+    </if>
+    <if test="updatedAt != null">
+    updated_at,
+    </if>
+    <if test="deletedAt != null">
+    deleted_at,
+    </if>
+    <if test="createdBy != null">
+    created_by,
+    </if>
+    <if test="updatedBy != null">
+    updated_by,
+    </if>
+    <if test="tenantId != null">
+    tenant_id,
+    </if>
+        </trim>
+
+
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+    <if test="id != null">
+        #{id,jdbcType=INTEGER},
+    </if>
+    <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+    </if>
+    <if test="parentId != null">
+        #{parentId,jdbcType=INTEGER},
+    </if>
+    <if test="path != null">
+        #{path,jdbcType=VARCHAR},
+    </if>
+    <if test="sort != null">
+        #{sort,jdbcType=INTEGER},
+    </if>
+    <if test="status != null">
+        #{status,jdbcType=TINYINT},
+    </if>
+    <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+    </if>
+    <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+    </if>
+    <if test="deletedAt != null">
+        #{deletedAt,jdbcType=TIMESTAMP},
+    </if>
+    <if test="createdBy != null">
+        #{createdBy,jdbcType=BIGINT},
+    </if>
+    <if test="updatedBy != null">
+        #{updatedBy,jdbcType=BIGINT},
+    </if>
+    <if test="tenantId != null">
+        #{tenantId,jdbcType=INTEGER},
+    </if>
+        </trim>
+
+
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.tanchengjin.cms.modules.article.pojo.ArticleCategory">
+        update article_category
+        <set>
+    <if test="id != null">
+
+
+        id = #{id,jdbcType=INTEGER},
+    </if>
+    <if test="name != null">
+
+
+        `name` = #{name,jdbcType=VARCHAR},
+    </if>
+    <if test="parentId != null">
+
+
+        parent_id = #{parentId,jdbcType=INTEGER},
+    </if>
+    <if test="path != null">
+
+
+        path = #{path,jdbcType=VARCHAR},
+    </if>
+    <if test="sort != null">
+
+
+        sort = #{sort,jdbcType=INTEGER},
+    </if>
+    <if test="status != null">
+
+
+        `status` = #{status,jdbcType=TINYINT},
+    </if>
+    <if test="createdAt != null">
+
+
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+    </if>
+    <if test="updatedAt != null">
+
+
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+    </if>
+    <if test="deletedAt != null">
+
+
+        deleted_at = #{deletedAt,jdbcType=TIMESTAMP},
+    </if>
+    <if test="createdBy != null">
+
+
+        created_by = #{createdBy,jdbcType=BIGINT},
+    </if>
+    <if test="updatedBy != null">
+
+
+        updated_by = #{updatedBy,jdbcType=BIGINT},
+    </if>
+    <if test="tenantId != null">
+
+
+        tenant_id = #{tenantId,jdbcType=INTEGER},
+    </if>
+
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.tanchengjin.cms.modules.article.pojo.ArticleCategory">
+        update article_category
+
+        set `name` = #{name,jdbcType=VARCHAR} parent_id = #{parentId,jdbcType=INTEGER} path = #{path,jdbcType=VARCHAR} sort = #{sort,jdbcType=INTEGER} `status` = #{status,jdbcType=TINYINT} created_at = #{createdAt,jdbcType=TIMESTAMP} updated_at = #{updatedAt,jdbcType=TIMESTAMP} deleted_at = #{deletedAt,jdbcType=TIMESTAMP} created_by = #{createdBy,jdbcType=BIGINT} updated_by = #{updatedBy,jdbcType=BIGINT} tenant_id = #{tenantId,jdbcType=INTEGER}
+
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="count" resultType="int">
+        select count(1)from article_category
+    </select>
+
+    <select id="getAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from article_category
+    </select>
+
+    <select id="getAllByCondition" resultMap="BaseResultMap" parameterType="com.tanchengjin.cms.modules.article.pojo.ArticleCategory">
+        select
+        <include refid="Base_Column_List"/>
+        from article_category
+
+        <where>
+
+                <if test="id != null ">
+                     id = #{id}
+                </if>
+
+                <if test="name != null and name != ''">
+                     AND  `name` = #{name}
+                </if>
+
+                <if test="parentId != null ">
+                     AND  parent_id = #{parentId}
+                </if>
+
+                <if test="path != null and path != ''">
+                     AND  path = #{path}
+                </if>
+
+                <if test="sort != null ">
+                     AND  sort = #{sort}
+                </if>
+
+                <if test="status != null ">
+                     AND  `status` = #{status}
+                </if>
+
+                <if test="createdAt != null ">
+                     AND  created_at = #{createdAt}
+                </if>
+
+                <if test="updatedAt != null ">
+                     AND  updated_at = #{updatedAt}
+                </if>
+
+                <if test="deletedAt != null ">
+                     AND  deleted_at = #{deletedAt}
+                </if>
+
+                <if test="createdBy != null ">
+                     AND  created_by = #{createdBy}
+                </if>
+
+                <if test="updatedBy != null ">
+                     AND  updated_by = #{updatedBy}
+                </if>
+
+                <if test="tenantId != null ">
+                     AND  tenant_id = #{tenantId}
+                </if>
+        </where>
+    </select>
+
+    <delete id="batchDeleteByPrimaryKey">
+
+    </delete>
+</mapper>

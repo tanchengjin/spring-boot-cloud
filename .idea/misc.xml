@@ -5,6 +5,11 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/application/pom.xml" />
+        <option value="$PROJECT_DIR$/code-generator/pom.xml" />
+        <option value="$PROJECT_DIR$/html-to-pdf/pom.xml" />
+        <option value="$PROJECT_DIR$/cms/pom.xml" />
+        <option value="$PROJECT_DIR$/cms-feign-api/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
