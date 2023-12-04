@@ -1,7 +1,6 @@
 
 package com.tanchengjin.cms.modules.article.service;
 
-import com.tanchengjin.cms.annotations.dict.db.DictOperator;
 import com.tanchengjin.cms.modules.article.pojo.ArticleCategory;
 
 import java.util.List;

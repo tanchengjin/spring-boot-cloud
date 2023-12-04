@@ -1,9 +1,6 @@
 package com.tanchengjin.cms.modules.article.pojo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.tanchengjin.cms.annotations.dict.Dict;
-import com.tanchengjin.cms.annotations.UserLevelEnum;
-import com.tanchengjin.cms.annotations.seria.EnumSerialize;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
@@ -26,8 +23,6 @@ public class Article implements Serializable {
      * 分类id
      */
     @ApiModelProperty("分类id")
-    @Dict(value = UserLevelEnum.class, method = "getMsgByCode")
-    @EnumSerialize(Article.class)
     public Integer categoryId;
     /**
      * 文章标题

@@ -4,9 +4,7 @@ import com.alibaba.fastjson.serializer.*;
 import com.tanchengjin.cms.annotations.dict.db.DictOperator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.AnnotationUtils;
-import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.lang.reflect.Field;

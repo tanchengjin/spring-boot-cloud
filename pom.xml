@@ -33,6 +33,7 @@
         <module>shop/goods-api</module>
         <module>MQ</module>
         <module>demo-modules</module>
+        <module>netty</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>

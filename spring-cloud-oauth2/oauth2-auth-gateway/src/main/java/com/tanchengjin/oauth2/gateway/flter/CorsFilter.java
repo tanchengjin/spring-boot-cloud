@@ -25,7 +25,6 @@ public class CorsFilter implements WebFilter {
 
     @Override
     public Mono<Void> filter(ServerWebExchange ctx, WebFilterChain chain) {
-
         ServerHttpRequest request = ctx.getRequest();
 
         String path = request.getPath().value();
