@@ -34,6 +34,7 @@
         <module>MQ</module>
         <module>demo-modules</module>
         <module>netty</module>
+        <module>auth-util</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>

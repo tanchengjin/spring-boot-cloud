@@ -1,4 +1,4 @@
-package com.tanchengjin.oauth2.test;
+package com.tanchengjin.websocket;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,9 +11,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  **/
 @SpringBootApplication
 @EnableDiscoveryClient
-//@EnableFeignClients(basePackages = "com.tanchengjin.*.feign")
-public class Oauth2TestApplication {
+public class WebSocketApplication {
     public static void main(String[] args) {
-        SpringApplication.run(Oauth2TestApplication.class, args);
+        SpringApplication.run(WebSocketApplication.class, args);
     }
 }
